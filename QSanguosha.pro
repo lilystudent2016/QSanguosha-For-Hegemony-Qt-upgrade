@@ -2,12 +2,12 @@
 # Project created by QtCreator 2010-06-13T04:26:52
 # -------------------------------------------------
 TARGET = QSanguosha
-QT += network widgets
-!winrt:QT += declarative
+QT += network widgets core gui
+!winrt:QT += quick
 TEMPLATE = app
 CONFIG += audio
 
-CONFIG += c++11
+CONFIG += c++17
 
 CONFIG += lua
 #CONFIG += lua53
@@ -386,8 +386,9 @@ linux{
 CONFIG(audio){
     DEFINES += AUDIO_SUPPORT
     INCLUDEPATH += include/fmod
-    CONFIG(debug, debug|release): LIBS += -lfmodexL
-    else:LIBS += -lfmodex
+    #CONFIG(debug, debug|release): LIBS += -lfmodexL
+    #else:LIBS += -lfmodex
+    LIBS += -lfmodex64
     SOURCES += src/core/audio.cpp
 
     android{
@@ -555,8 +556,9 @@ OTHER_FILES += \
     resource/android/AndroidManifest.xml \
     builds/sanguosha.ts
 
-CONFIG(debug, debug|release): LIBS += -lfreetype_D
-else:LIBS += -lfreetype
+#CONFIG(debug, debug|release): LIBS += -lfreetype_D
+#else:LIBS += -lfreetype
+LIBS += -lfreetype
 
 INCLUDEPATH += $$_PRO_FILE_PWD_/include/freetype
 DEPENDPATH += $$_PRO_FILE_PWD_/include/freetype

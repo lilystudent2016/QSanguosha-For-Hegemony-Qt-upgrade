@@ -20,6 +20,7 @@
 
 #include "generaloverview.h"
 #include "engine.h"
+#include "qaction.h"
 #ifdef Q_OS_IOS
 #include "ui_generaloverview_ios.h"
 #else
@@ -30,7 +31,7 @@
 #include "generalmodel.h"
 #include "skinbank.h"
 #include "stylehelper.h"
-
+#include <QButtonGroup>
 #include <QHBoxLayout>
 #include <QGroupBox>
 #include <QAbstractButton>

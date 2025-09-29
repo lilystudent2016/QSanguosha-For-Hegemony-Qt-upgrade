@@ -270,4 +270,4 @@ Linux or MinGW(Windows)
    libstdc++-6.dll
    libwinpthread-1.dll
 
-
+or using command "windeployqt QSanguosha.exe"
