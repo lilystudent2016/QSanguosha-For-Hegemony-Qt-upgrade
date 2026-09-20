@@ -287,8 +287,15 @@ int Player::getAttackRange(bool include_weapon) const
 
     if (include_weapon) {
         const Weapon *card = qobject_cast<const Weapon *>(weapon->getRealCard());
-        Q_ASSERT(card);
-        weapon_range = card->getRange();
+        // 修复：原为 Q_ASSERT(card)。录像可能来自启用了额外扩展包的房间，
+        // 本地引擎不认识该武器 ⇒ qobject_cast 返回 NULL ⇒ 断言（Release 静默 / Debug fail-fast）。
+        // 未知武器按"不计射程"处理，与"没有武器"一致，不影响任何合法路径。
+        if (card != NULL) {
+            weapon_range = card->getRange();
+        } else {
+            qWarning("Player::getAttackRange: unknown weapon '%s' (range treated as 0)",
+                     qPrintable(weapon->getRealCard() ? weapon->getRealCard()->objectName() : QString()));
+        }
     }
 
     int real_range = qMax(original_range, weapon_range) + Sanguosha->correctAttackRange(this, include_weapon, false);
@@ -371,7 +378,14 @@ void Player::setGeneral(const General *new_general)
 void Player::setGeneralName(const QString &general_name)
 {
     const General *new_general = Sanguosha->getGeneral(general_name);
-    Q_ASSERT(general_name.isNull() || general_name.isEmpty() || new_general != NULL);
+    // 修复：原为 Q_ASSERT(...)。录像可能来自"启用了额外扩展包的房间"，
+    // 本地引擎不认识该武将 ⇒ 断言（Release 静默 / Debug fail-fast）。
+    // 改为：不认识就忽略并记日志，不改变其它任何合法路径的行为。
+    if (!general_name.isNull() && !general_name.isEmpty() && new_general == NULL) {
+        qWarning("Player::setGeneralName: unknown general '%s' (ignored)",
+                 qPrintable(general_name));
+        return;
+    }
     setGeneral(new_general);
 }
 
@@ -609,7 +623,12 @@ void Player::detachAllSkills()
 void Player::addSkill(const QString &skill_name, bool head_skill)
 {
     const Skill *skill = Sanguosha->getSkill(skill_name);
-    Q_ASSERT(skill);
+    // 修复：原为 Q_ASSERT(skill)。与"未知武将"同源 —— 录像房间启用了额外扩展包时，
+    // 本地引擎没有该技能。忽略即可（本地无从描述它，记日志便于排查）。
+    if (skill == NULL) {
+        qWarning("Player::addSkill: unknown skill '%s' (ignored)", qPrintable(skill_name));
+        return;
+    }
     if (head_skill)
         head_skills[skill_name] = !skill->canPreshow() || general1_showed;
     else
@@ -659,8 +678,18 @@ void Player::setPhaseString(const QString &phase_str)
 
 void Player::setEquip(WrappedCard *equip)
 {
+    // 修复：原为 Q_ASSERT(card != NULL)，且未判 equip 本身为 NULL。
+    // ClientPlayer::addCard(PlaceEquip) 会在此路径上遇到"本地引擎不认识的装备"
+    // （录像房间启用了额外扩展包）⇒ 原先 Debug 版断言 fail-fast。
+    if (equip == NULL) {
+        qWarning("Player::setEquip: null equip (ignored)");
+        return;
+    }
     const EquipCard *card = qobject_cast<const EquipCard *>(equip->getRealCard());
-    Q_ASSERT(card != NULL);
+    if (card == NULL) {
+        qWarning("Player::setEquip: card id=%d is not a known equip card (ignored)", equip->getId());
+        return;
+    }
     switch (card->location()) {
         case EquipCard::WeaponLocation: weapon = equip; break;
         case EquipCard::ArmorLocation: armor = equip; break;
@@ -673,8 +702,25 @@ void Player::setEquip(WrappedCard *equip)
 
 void Player::removeEquip(WrappedCard *equip)
 {
+    if (equip == NULL) {
+        qWarning("Player::removeEquip: null equip (ignored)");
+        return;
+    }
     const EquipCard *card = qobject_cast<const EquipCard *>(Sanguosha->getEngineCard(equip->getId()));
-    Q_ASSERT(card != NULL);
+    if (card == NULL) {
+        // 修复：原为 Q_ASSERT(card != NULL)。未知装备（额外扩展包）改为按 id 比对清空，
+        // 与 setEquip 侧的"未知装备不入槽"行为一致。
+        qWarning("Player::removeEquip: card id=%d is not a known equip card (fallback by id)",
+                 equip->getId());
+        const int id = equip->getId();
+        if (weapon != NULL && weapon->getId() == id) weapon = NULL;
+        else if (armor != NULL && armor->getId() == id) armor = NULL;
+        else if (defensive_horse != NULL && defensive_horse->getId() == id) defensive_horse = NULL;
+        else if (offensive_horse != NULL && offensive_horse->getId() == id) offensive_horse = NULL;
+        else if (treasure != NULL && treasure->getId() == id) treasure = NULL;
+        else if (special_horse != NULL && special_horse->getId() == id) special_horse = NULL;
+        return;
+    }
     switch (card->location()) {
         case EquipCard::WeaponLocation: weapon = NULL; break;
         case EquipCard::ArmorLocation: armor = NULL; break;
@@ -687,7 +733,8 @@ void Player::removeEquip(WrappedCard *equip)
 
 bool Player::hasEquip(const Card *card) const
 {
-    Q_ASSERT(card != NULL);
+    // 修复：原为 Q_ASSERT(card != NULL)。未知牌（额外扩展包）时返回 false。
+    if (card == NULL) return false;
     int weapon_id = -1, armor_id = -1, def_id = -1, off_id = -1, tr_id = -1, sp_id = -1;
     if (weapon) weapon_id = weapon->getEffectiveId();
     if (armor) armor_id = armor->getEffectiveId();
@@ -972,7 +1019,9 @@ bool Player::isAllNude() const
 
 bool Player::canDiscard(const Player *to, const QString &flags) const
 {
-    Q_ASSERT(to);
+    // 修复：原为 Q_ASSERT(to)。查证型接口，目标不存在时保守返回 false
+    //（不改变任何合法路径的行为）。
+    if (to == NULL) return false;
     static QChar handcard_flag('h');
     static QChar equip_flag('e');
     static QChar judging_flag('j');
@@ -1003,7 +1052,9 @@ bool Player::canDiscard(const Player *to, const QString &flags) const
 
 bool Player::canDiscard(const Player *to, int card_id) const
 {
-    Q_ASSERT(to);
+    // 修复：原为 Q_ASSERT(to)。查证型接口，目标不存在时保守返回 false
+    //（不改变任何合法路径的行为）。
+    if (to == NULL) return false;
     if (this == to) {
         if (isJilei(Sanguosha->getCard(card_id)))
             return false;
@@ -1036,7 +1087,9 @@ bool Player::canDiscard(const Player *to, int card_id) const
 
 bool Player::canGetCard(const Player *to, const QString &flags) const
 {
-    Q_ASSERT(to);
+    // 修复：原为 Q_ASSERT(to)。查证型接口，目标不存在时保守返回 false
+    //（不改变任何合法路径的行为）。
+    if (to == NULL) return false;
     static QChar handcard_flag('h');
     static QChar equip_flag('e');
     static QChar judging_flag('j');
@@ -1086,7 +1139,9 @@ bool Player::canGetCard(const Player *to, const QString &flags) const
 
 bool Player::canGetCard(const Player *to, int card_id) const
 {
-    Q_ASSERT(to);
+    // 修复：原为 Q_ASSERT(to)。查证型接口，目标不存在时保守返回 false
+    //（不改变任何合法路径的行为）。
+    if (to == NULL) return false;
     bool eq = false;
     if (to->hasEquip())
         foreach (const Card *card, to->getEquips()) {
@@ -2045,14 +2100,24 @@ void Player::setActualGeneral2(const General *general)
 void Player::setActualGeneral1Name(const QString &name)
 {
     const General *general = Sanguosha->getGeneral(name);
-    Q_ASSERT(!(name.isNull() || name.isEmpty() || general == NULL));
+    // 修复：同 setGeneralName —— 引擎不认识的武将（额外扩展包）不再触发断言
+    if (!name.isNull() && !name.isEmpty() && general == NULL) {
+        qWarning("Player::setActualGeneral1Name: unknown general '%s' (ignored)",
+                 qPrintable(name));
+        return;
+    }
     setActualGeneral1(general);
 }
 
 void Player::setActualGeneral2Name(const QString &name)
 {
     const General *general = Sanguosha->getGeneral(name);
-    Q_ASSERT(!(name.isNull() || name.isEmpty() || general == NULL));
+    // 修复：同 setGeneralName —— 引擎不认识的武将（额外扩展包）不再触发断言
+    if (!name.isNull() && !name.isEmpty() && general == NULL) {
+        qWarning("Player::setActualGeneral2Name: unknown general '%s' (ignored)",
+                 qPrintable(name));
+        return;
+    }
     setActualGeneral2(general);
 }
 
@@ -2156,6 +2221,8 @@ bool Player::ownHeadSkill(const QString &skill_name) const
 
 bool Player::ownHeadSkill(const Skill *skill) const
 {
+    // 修复：未知技能时调用方会传 NULL（getSkill 返回 NULL）→ 原为空指针解引用
+    if (skill == NULL) return false;
     return ownHeadSkill(skill->objectName());
 }
 
@@ -2166,12 +2233,15 @@ bool Player::ownDeputySkill(const QString &skill_name) const
 
 bool Player::ownDeputySkill(const Skill *skill) const
 {
+    // 修复：未知技能时调用方会传 NULL（getSkill 返回 NULL）→ 原为空指针解引用
+    if (skill == NULL) return false;
     return ownDeputySkill(skill->objectName());
 }
 
 bool Player::isFriendWith(const Player *player) const
 {
-    Q_ASSERT(player);
+    // 修复：原为 Q_ASSERT(player) + 紧随其后的 if (player == NULL) return false，
+    // 断言纯冗余（Release 静默 / Debug fail-fast）。保留防御性返回。
     if (player == NULL) return false;
 
     if (this == player) return true;

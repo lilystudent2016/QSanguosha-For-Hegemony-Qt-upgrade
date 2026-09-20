@@ -72,6 +72,7 @@ Room::Room(QObject *parent, const QString &mode)
     _m_Id = s_global_room_id++;
     _m_lastMovementId = 0;
     player_count = Sanguosha->getPlayerCount(mode);
+    m_autoplayWait = false;   // [A1 补丁]
     scenario = Sanguosha->getScenario(mode);
     m_surrenderPlayer = NULL;
 
@@ -787,6 +788,22 @@ bool Room::doRequest(ServerPlayer *player, QSanProtocol::CommandType command, co
     else return true;
 }
 
+// ── [A1 补丁 2026-09-19] 影子请求：只写录像，不等回话 ──────────────────────────
+// 目的：让「服务端 AI 直接算」的席位决策也能进录像（否则该席位录像里没有决策报文）。
+// 安全性：机器人/无 socket 席位上，ServerPlayer::setSocket(NULL) 已断开
+//         message_ready→sendMessage（serverplayer.cpp:355），所以 unicast 只喂 recorder。
+// ★ 只对**非 online** 席位生效：online 席位的请求由 doRequest 正常产生，否则会重复记录。
+void Room::recordShadowRequest(ServerPlayer *player, QSanProtocol::CommandType command, const QVariant &arg)
+{
+    if (player == NULL || !player->isRecording() || player->isOnline()) return;
+
+    // 与 doRequest 同构：S_SRC_ROOM|S_TYPE_REQUEST|S_DEST_CLIENT = 1041
+    Packet packet(S_SRC_ROOM | S_TYPE_REQUEST | S_DEST_CLIENT, command);
+    packet.createGlobalSerial();
+    packet.setMessageBody(arg);
+    player->unicast(&packet);
+}
+
 bool Room::doBroadcastRequest(QList<ServerPlayer *> &players, QSanProtocol::CommandType command)
 {
     time_t timeOut = ServerInfo.getCommandTimeout(command, S_SERVER_INSTANCE);
@@ -1011,6 +1028,13 @@ bool Room::notifyMoveFocus(ServerPlayer *focus)
 
 bool Room::notifyMoveFocus(ServerPlayer *focus, CommandType command)
 {
+    // ── [A1 补丁 2026-09-19] 影子请求。本重载的**每个**调用点都恰好对应一个
+    //    客户端决策询问（askForXXX），且 command 与该处 doRequest 的命令一致
+    //    ⇒ 用这一处挂点覆盖全部决策类型（PLAY_CARD/RESPONSE_CARD/ASK_PEACH/
+    //    DISCARD_CARD/CHOOSE_CARD/CHOOSE_PLAYER/INVOKE_SKILL/…）。
+    //    对 online 席位自动跳过（见 recordShadowRequest），普通联机录像零影响。
+    recordShadowRequest(focus, command, QVariant());
+
     QList<ServerPlayer *> players;
     players.append(focus);
     Countdown countdown;
@@ -3555,6 +3579,70 @@ void Room::fillRobotsCommand(ServerPlayer *player, const QVariant &)
     }
 }
 
+// ── [A1 补丁 2026-09-19] 无头自对弈 ─────────────────────────────────────────
+// 为什么需要它：现存代码里「造机器人」只有 ADD_ROBOT(75) 一条路，而
+//   ① addRobotCommand 要求请求者是房主，② 房主必须先由 socket 玩家 SIGNUP 占座，
+// 于是房间里**永远至少有一个 online 座位**；而 ServerPlayer::getAI() 对
+// state=="online" 一律返回 NULL ⇒ Room 里那 29 处 `AI *ai = player->getAI();
+// if (ai) {...} else { doRequest(...) }` 会走 doRequest 等客户端回话
+// ⇒ 只用外部脚本驱动**拿不到全 bot 对局**（这是 A1 用 Python 驱动撞的墙）。
+// 本函数以「无房主」身份直接补满机器人（addRobotCommand 的 `if (player && ...)`
+// 守卫天然放行 player==NULL），并让**全 10 席各自开始录像**，最后再启动对局。
+// 期间用 m_autoplayWait 压住 toggleReadyCommand 里的「满员即 start()」，
+// 保证录像器在 RoomThread 启动**之前**挂好，避免最后一名机器人的录像漏掉开局段。
+void Room::autoplayFillRobots()
+{
+    if (Config.ForbidAddingRobot) {
+        qWarning("[A1] Config.ForbidAddingRobot=true，无法填机器人");
+        return;
+    }
+
+    m_autoplayWait = true;
+    while (!isFull())
+        addRobotCommand(NULL, QVariant());
+
+    // 机器人没有 socket，但 ServerPlayer::unicast 仍然 feed 录像器
+    //（serverplayer.cpp:398）⇒ 每一席都能独立录下「该席可见」的全过程。
+    foreach (ServerPlayer *player, m_players) {
+        player->startRecord();
+
+        // ── [A1 补丁 2026-09-19] 补「连接握手」两条通知 ───────────────────────
+        // 与 Server::processNewConnection 里给新连接的 notifyClient 完全一致
+        //（server.cpp:112-113）。作用：让录像自带版本串与对局配置串。
+        // ★ 必需：否则 build_db 的 survey() 取不到版本 ⇒ best_table() 多表同分、
+        //   择表歧义 ⇒ 实测 6 份里 3 份被标成完全不同的决策类型（静默污染）。
+        //   带上版本串后 ver="2.3.43" 可直接命中同名枚举表。
+        {
+            Packet version_packet(S_SRC_ROOM | S_TYPE_NOTIFICATION | S_DEST_CLIENT, S_COMMAND_CHECK_VERSION);
+            version_packet.setMessageBody(Sanguosha->getVersion());
+            player->unicast(&version_packet);
+        }
+        {
+            Packet setup_packet(S_SRC_ROOM | S_TYPE_NOTIFICATION | S_DEST_CLIENT, S_COMMAND_SETUP);
+            setup_packet.setMessageBody(Sanguosha->getSetupString());
+            player->unicast(&setup_packet);
+        }
+
+        // ── [A1 补丁 2026-09-19] 补「我是谁」的自我属性通知（★ 必需）─────────
+        // 对标 Room::signup() 里的 `if (!is_robot) notifyProperty(player, player,
+        // "objectName");`（room.cpp:3699-3700）—— 机器人分支被跳过 ⇒ 录像里没有
+        // SET_PROPERTY(MG_SELF, "objectName", <名>) 帧（protocol.cpp:28 的
+        // S_PLAYER_SELF_REFERENCE_ID；唯一产生处是 notifyProperty 在
+        // `propertyOwner == playerToNotify` 时的分支，room.cpp:4871-4872）。
+        //
+        // 少了这一帧的后果（实测，20 份入库后暴露）：
+        //   build_db 的 self_id = None ⇒ sessions 的 self_name / self_role /
+        //   self_kingdom 全空、**self_in_win / is_winner_dp 全 0**
+        //   —— 即「胜方视角」这个 R7 胜方画像的核心字段直接失效；
+        //   R1b 的 mark 掩码（如 HalfMaxHpLeft 需判「是否本人」）同样依赖它。
+        // 补在 startRecord() 之后、且与真实客户端的先后一致（握手 → 我是谁）。
+        notifyProperty(player, player, "objectName");
+    }
+
+    m_autoplayWait = false;
+    start();   // = 满员启动，等价于 toggleReadyCommand 里的 start()
+}
+
 void Room::mirrorGuanxingStepCommand(ServerPlayer *player, const QVariant &arg)
 {
     doBroadcastNotify(S_COMMAND_MIRROR_GUANXING_STEP, arg, player);
@@ -3612,6 +3700,7 @@ ServerPlayer *Room::getOwner() const
 
 void Room::toggleReadyCommand(ServerPlayer *, const QVariant &)
 {
+    if (m_autoplayWait) return;   // [A1 补丁] autoplay 模式下由 autoplayFillRobots 显式 start()
     if (!game_started && isFull())
         start();
 }
@@ -3784,7 +3873,17 @@ void Room::chooseGenerals(QList<ServerPlayer *> &to_assign, bool has_assign, boo
 void Room::run()
 {
     // initialize random seed for later use
-    qsrand(QTime(0, 0, 0).secsTo(QTime::currentTime()));
+    // ── [A1 补丁 2026-09-20] A1_SEED 环境变量优先 ──────────────────────────
+    //   未设 A1_SEED 时行为与原来**完全一致**（当天 00:00 起的秒数）。
+    //   设了就用该固定值做种子 ⇒ 整局可复现（武将与座次/牌堆/每次决策/胜负全同）。
+    //   用途：① A3「可复现对局」；② 插桩 A/B 对照（两侧同种子逐字节比对录像）。
+    //   ⚠ 每局都会经过这里 ⇒ 固定 A1_SEED 会让同批**所有局完全相同**，
+    //     只有对照实验才这么用；正常批量**不要**设。
+    {
+        bool a1SeedOk = false;
+        const uint a1Seed = QString::fromLocal8Bit(qgetenv("A1_SEED")).toUInt(&a1SeedOk);
+        qsrand(a1SeedOk ? a1Seed : (uint)QTime(0, 0, 0).secsTo(QTime::currentTime()));
+    }
     Config.AIDelay = Config.OriginAIDelay;
 
     foreach (ServerPlayer *player, m_players) {
@@ -4454,7 +4553,20 @@ bool Room::isJinkEffected(ServerPlayer *user, const Card *jink)
 {
     if (jink == NULL || user == NULL)
         return false;
-    Q_ASSERT(jink->isKindOf("Jink"));
+    // ── [A1 补丁 2026-09-19] 删除 Q_ASSERT(jink->isKindOf("Jink")) ──────────────
+    // 原断言「与 Release 行为不一致」：Release 版 -DQT_NO_DEBUG 会把它编译掉，
+    // 2316 局录像一直按「不检查」跑；Debug 版恢复断言后，经【傲才】(Aocai) 等
+    // **虚拟卡**（AocaiCard : public SkillCard，非 Jink 子类）响应的路径必崩。
+    // 触发链：gamerule.cpp:833 askForCard(to,"jink") → isJinkEffected(AocaiCard)。
+    // 删除 ≠ 放行新行为：Release 一直如此（下方 tag / JinkEffect 逻辑对任意 Card 可用），
+    // 目的是让 Debug 与 Release 语义一致。若判定「虚拟卡不应到达此处」属真缺陷，
+    // 应改调用方而非恢复断言 —— 该判断留待裁定。
+    // ★ 报警而非静默：把「谁用什么卡到了这里」记进 <A1_OUT>/qt.log，以便统计
+    //   发生频率、判断是否真缺陷（此前只知道会崩、不知道崩多少次）。
+    if (!jink->isKindOf("Jink"))
+        qWarning("[A1 诊断] isJinkEffected 收到非 Jink 卡：user=%s card=%s class=%s",
+                 qPrintable(user->objectName()), qPrintable(jink->objectName()),
+                 jink->metaObject()->className());
     if (jink->tag["ResponseNegated"].toBool()) return false;
     QVariant jink_data = QVariant::fromValue((const Card *)jink);
     return !thread->trigger(JinkEffect, this, user, jink_data);
@@ -7066,7 +7178,13 @@ bool Room::askForQiaobian(ServerPlayer *player, const QList<ServerPlayer *> &tar
 
 QList<int> Room::askForTransferFieldCards(ServerPlayer *zhuge, const QList<ServerPlayer *> targets, const QString &reason, bool equipArea, bool judgingArea)
 {
-    Q_ASSERT(targets.length() != 2);
+    // ── [A1 补丁 2026-09-19] 删除错误断言 Q_ASSERT(targets.length() != 2) ──────
+    // 原断言与唯一调用点自相矛盾：Room::askForQiaobian(`room.cpp:7094`) 只在
+    // `choosees.length() == 2` 时才调本函数 ⇒ 断言必然触发。函数体用
+    // `foreach (ServerPlayer *to, targets)` 天然支持任意个数，本无 2 的禁忌。
+    // Release 版 -DQT_NO_DEBUG 把断言编译掉 ⇒ 一直正常（张郃【巧变】选项三）；
+    // Debug 版每次使用必崩（qt_assert → 0xC0000602）。
+    // 为保证 A1 语料在 Debug/Release 下语义一致，此处不再保留该断言。
     bool success = false;
     tryPause();
     notifyMoveFocus(zhuge, S_COMMAND_SKILL_TRANSFERFIELDCARDS);
@@ -7350,7 +7468,26 @@ ServerPlayer *Room::askForPlayerChosen(ServerPlayer *player, const QList<ServerP
     AI *ai = player->getAI();
     ServerPlayer *choice = NULL;
     if (ai) {
-        choice = ai->askForPlayersChosen(targets, skillName, 1, optional ? 0 : 1).first();
+        // ── [A1 补丁 2026-09-19] 空表保护（Debug 版 fail-fast 崩溃修复）──────
+        // bot 用「空表」表示「放弃发动」：lua/ai/smart-ai.lua:4073 `else return {}`，
+        // 任何注册了 sgs.ai_skill_playerchosen[<skill>] 的技能都可能返回 {}。
+        // 例：吕范【调度】transformation-ai.lua:1697 在多数分支直接 `return {}`。
+        // 原代码无条件 `.first()` ⇒ Debug 版 Q_ASSERT(!isEmpty())（qlist.h:361）触发
+        // RaiseFailFastException / 0xC0000602，开局约 18s 内进程猝死；
+        // Release 版 -DQT_NO_DEBUG 把 Q_ASSERT 编译掉，UB 但实测退化为 NULL（=放弃发动）。
+        // 这里显式取齐 Release 语义，使 Debug/Release 行为一致；对非空表零影响。
+        QList<ServerPlayer *> ai_choices = ai->askForPlayersChosen(targets, skillName, 1, optional ? 0 : 1);
+        choice = ai_choices.isEmpty() ? NULL : ai_choices.first();
+        // ★ 报警而非静默：空表 = bot 主动放弃发动。统计「哪些技能会出现」，
+        //   是后续 B3 势力推断/参数标定的输入之一。
+        if (ai_choices.isEmpty()) {
+            static QSet<QString> a1_warned_empty;
+            if (!a1_warned_empty.contains(skillName)) {
+                a1_warned_empty.insert(skillName);
+                qWarning("[A1 诊断] bot 空表放弃：skill=%s player=%s targets=%d",
+                         qPrintable(skillName), qPrintable(player->objectName()), targets.length());
+            }
+        }
         if (choice || !notify_skill)
             thread->delay();
     } else {

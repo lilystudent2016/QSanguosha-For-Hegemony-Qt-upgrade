@@ -36,6 +36,7 @@
 #include "mainwindow.h"
 #include "audio.h"
 #include "stylehelper.h"
+#include "tools/record-dump.h"
 
 #ifndef WINDOWS
 #include <QDir>
@@ -72,6 +73,8 @@ static bool callback(const wchar_t *, const wchar_t *id, void *, EXCEPTION_POINT
 int main(int argc, char *argv[])
 {
     bool noGui = argc > 1 && strcmp(argv[1], "-server") == 0;
+    // 录像局面导出模式：仍然用 QApplication（Client 依赖 QtGui），但不建任何窗口、不显示 splash
+    bool dumpMode = argc > 1 && strcmp(argv[1], "-dump") == 0;
 
     if (noGui)
         new QCoreApplication(argc, argv);
@@ -83,7 +86,7 @@ int main(int argc, char *argv[])
 #define SPLASH_DISABLED
 #else
     QSplashScreen *splash = NULL;
-    if (!noGui) {
+    if (!noGui && !dumpMode) {
         QPixmap raraLogo;
         QDate currentDate = QDate::currentDate();
         if (currentDate.month() == 11 && currentDate.day() == 30)
@@ -158,7 +161,16 @@ int main(int argc, char *argv[])
 #endif
 
     // initialize random seed for later use
-    qsrand(QTime(0, 0, 0).secsTo(QTime::currentTime()));
+    // ── [A1 补丁 2026-09-20] A1_SEED 环境变量优先，★ 必须在**进程最早期**播种 ──
+    //   原因（A/B 实测暴露）：机器人填充 / 武将分配等 qrand 调用发生在
+    //   RoomThread::run() 之前；若这里仍用时间种子（进程启动时刻），那批调用
+    //   就会两侧分叉，之后再固定种子也救不回来 —— 表现为「同 A1_SEED 仍得到
+    //   不同武将与座次」。未设 A1_SEED 时行为与原来完全一致。
+    {
+        bool a1SeedOk = false;
+        const uint a1Seed = QString::fromLocal8Bit(qgetenv("A1_SEED")).toUInt(&a1SeedOk);
+        qsrand(a1SeedOk ? a1Seed : (uint)QTime(0, 0, 0).secsTo(QTime::currentTime()));
+    }
 
     // load the main translation file first for we need to translate messages of splash.
     QTranslator translator;
@@ -186,6 +198,26 @@ int main(int argc, char *argv[])
 
     if (qApp->arguments().contains("-server")) {
         Server *server = new Server(qApp);
+
+        // ── [A1 补丁 2026-09-19] 无头自对弈 ──────────────────────────────
+        //    QSanguosha.exe -server -autoplay [N]
+        //     不开监听端口；在进程内直接连跑 N 局「全 10 席都是 bot」的国战，
+        //     每局 10 席各自录像到工作目录 a1_out/(gNNN/<座位>.qsgs)，进度写
+        //     a1_out/autoplay.log。用于 A1 的训练数据生成。
+        if (qApp->arguments().contains("-autoplay")) {
+            const QStringList args = qApp->arguments();
+            const int idx = args.indexOf("-autoplay");
+            int games = 1;
+            if (idx + 1 < args.size()) {
+                bool ok = false;
+                const int v = args.at(idx + 1).toInt(&ok);
+                if (ok && v > 0)
+                    games = v;
+            }
+            server->autoplay(games);
+            return qApp->exec();
+        }
+
         printf("Server is starting on port %u\n", Config.ServerPort);
 
         if (server->listen())
@@ -194,6 +226,19 @@ int main(int argc, char *argv[])
             printf("Starting failed!\n");
 
         return qApp->exec();
+    }
+
+    // ── 录像局面导出：QSanguosha.exe -dump <录像.qsgs> [-o out.jsonl] [-n N] ──
+    //    不需要服务器、不建窗口，输出 JSON Lines（stdout 或 -o 文件）。
+    if (dumpMode) {
+        const QStringList args = qApp->arguments();
+        const int i = args.indexOf("-dump");
+        const QString rec = (i >= 0 && i + 1 < args.size()) ? args.at(i + 1) : QString();
+        QString outPath;
+        if (args.contains("-o")) outPath = args.at(args.indexOf("-o") + 1);
+        int limit = 0;
+        if (args.contains("-n")) limit = args.at(args.indexOf("-n") + 1).toInt();
+        return runRecordDump(rec, outPath, limit);
     }
 
     showSplashMessage(QSplashScreen::tr("Loading style sheet..."));

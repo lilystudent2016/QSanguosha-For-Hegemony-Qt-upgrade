@@ -1,0 +1,25 @@
+项目根：C:\Users\Administrator\code\QSanguosha-For-Hegemony-Qt-upgrade\.workbuddy\skill-demo\sandbox
+技能名：xunlie（package: demo）
+
+── ① 中文条目 lang/zh_CN ──
+   name   lang/zh_CN/Package/DemoPackage.lua:3  "巡猎"
+   desc   lang/zh_CN/Package/DemoPackage.lua:4  "出牌阶段限一次，你可弃置一张牌▶令一名其他角色选择一项：弃置一张牌，或受到你造成的1点普通伤害。"
+   prompt lang/zh_CN/Package/DemoPackage.lua:5  "是否发动“巡猎”，弃置一张牌并选择一名其他角色"
+   prompt lang/zh_CN/Package/DemoPackage.lua:6  "请选择一项：弃置一张牌，或受到1点普通伤害"
+
+── ② C++ 技能类 src/package ──
+   Xunlie         src/package/demo-xunlie.cpp:46  基类 ViewAsSkill
+
+── ② 注册位置 ──
+   src/package/demo-xunlie.cpp:89  Xunlie
+
+── ③ 技能 AI lua/ai ──
+   ai_skill_use_func(key=XunlieCard) lua/ai/demo-xunlie-ai.lua:32
+   ai_skill_choice              lua/ai/demo-xunlie-ai.lua:49
+   ai_skill_discard             lua/ai/demo-xunlie-ai.lua:57
+   ai_use_value(key=XunlieCard) lua/ai/demo-xunlie-ai.lua:68
+   ai_card_intention(key=XunlieCard) lua/ai/demo-xunlie-ai.lua:69
+   ai_skills(name=)             lua/ai/demo-xunlie-ai.lua:12
+
+── 结论 ──
+   三处齐备，未发现硬性问题。

@@ -24,6 +24,7 @@
 #include <QObject>
 #include <QSet>
 #include <QStringList>
+#include <QElapsedTimer>
 
 #include "protocol.h"
 
@@ -50,10 +51,22 @@ public:
     Room *createNewRoom();
     void signupPlayer(ServerPlayer *player);
 
+    // ── [A1 补丁 2026-09-19] 无头自对弈（命令行 -autoplay [N]）──────────
+    //  不开监听端口，直接在进程内造「全 bot 房」连跑 N 局，每局 10 席全录像。
+    //  日志/录像落盘到工作目录下的 a1_out/（Debug 版无控制台，printf 无效）。
+    void autoplay(int games);
+
 private:
     void notifyClient(ClientSocket *socket, QSanProtocol::CommandType command, const QVariant &arg = QVariant());
 
     void processClientRequest(ClientSocket *socket, const QSanProtocol::Packet &signup);
+
+    void autoplayNextRoom();
+    int m_autoplayLeft;
+    int m_autoplaySeq;
+    QString m_autoplayOut;   // [A1 补丁] 输出根目录（env A1_OUT 可覆盖，多实例隔离用）
+    QElapsedTimer m_autoplayRoomT0;
+    QElapsedTimer m_autoplayAllT0;
 
     ServerSocket *server;
     Room *current;
@@ -67,6 +80,7 @@ private slots:
     void processRequest(const QByteArray &request);
     void cleanup();
     void gameOver();
+    void autoplayGameOver(const QString &winner);   // [A1 补丁]
 
 signals:
     void server_message(const QString &);

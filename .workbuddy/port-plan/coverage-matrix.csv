@@ -1,0 +1,472 @@
+﻿技能名,中文名,性质,老项目lang文件,老项目C++类,老项目C++基类,老项目C++位置,老项目AI hook数,FreeKill实现,FreeKill有AI,FreeKill有测试,分类,备注
+alliance_feast,联军盛宴,skill,StrategicAdvantagePackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+amazing_grace,五谷丰登,skill,StandardPackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+analeptic,酒,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+anyong,暗涌,skill,LordEXPackage.lua,Anyong,TriggerSkill,src/package/newsgs.cpp:2297,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+archery_attack,万箭齐发,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+await_exhausted,以逸待劳,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+baolie,豹烈,skill,LordEXPackage.lua,Baolie,PhaseChangeSkill,src/package/lord-ex.cpp:2765,2,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+baoling,暴凌,skill,MomentumPackage.lua,Baoling,TriggerSkill,src/package/momentum.cpp:800,0,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+bazhen,八阵,skill,StandardShuGeneral.lua,Bazhen,ViewHasSkill,src/package/standard-shu-generals.cpp:1101,1,,,,C,老项目基类 ViewHasSkill；需按 FreeKill 模板重写
+befriend_attacking,远交近攻,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+beige,悲歌,skill,StandardQunGeneral.lua,Beige,TriggerSkill,src/package/standard-qun-generals.cpp:1040,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+benghuai,崩坏,skill,MomentumPackage.lua,Benghuai,PhaseChangeSkill,src/package/momentum.cpp:852,1,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+biaozhao,表召,skill,LordEXPackage.lua,Biaozhao,ZeroCardViewAsSkill,src/package/mol.cpp:2849,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+biluan,避乱,skill,LordEXPackage.lua,Biluan,DistanceSkill,src/package/lord-ex.cpp:955,0,,,,C,老项目基类 DistanceSkill；需按 FreeKill 模板重写
+biyue,闭月,skill,StandardQunGeneral.lua,Biyue,PhaseChangeSkill,src/package/standard-qun-generals.cpp:346,1,packages\standard\pkg\skills\biyue.lua,是,是,A,FreeKill 已有；AI:有 测试:有；需核对中文描述是否同版本
+boyan,驳言,skill,LordEXPackage.lua,BoyanViewAsSkill,ZeroCardViewAsSkill,src/package/newsgs.cpp:927,1,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+boyanzongheng,驳言,skill,LordEXPackage.lua,BoyanZongheng,ZeroCardViewAsSkill,src/package/newsgs.cpp:991,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+buqu,不屈,skill,StandardWuGeneral.lua,Buqu,TriggerSkill,src/package/standard-wu-generals.cpp:1066,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+burning_camps,火烧连营,skill,StrategicAdvantagePackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+bushi,布施,skill,LordEXPackage.lua,Bushi,TriggerSkill,src/package/lord-ex.cpp:330,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+buyi,补益,skill,PowerPackage.lua,Buyi,TriggerSkill,src/package/power.cpp:1304,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+chaos,文和乱武,skill,LordEXPackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+chenglve,成略,skill,LordEXPackage.lua,Chenglve,TriggerSkill,src/package/lord-ex.cpp:2707,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+chengshang,承赏,skill,LordEXPackage.lua,Chengshang,TriggerSkill,src/package/newsgs.cpp:603,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+chuanxin,穿心,skill,MomentumPackage.lua,Chuanxin,TriggerSkill,src/package/momentum.cpp:894,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+chuli,除疠,skill,StandardQunGeneral.lua,Chuli,ZeroCardViewAsSkill,src/package/standard-qun-generals.cpp:120,1,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+collateral,借刀杀人,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+command,军令,skill,PowerPackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+congcha,聪察,skill,LordEXPackage.lua,Congcha,TriggerSkill,src/package/lord-ex.cpp:3510,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+congjian,从谏,skill,PowerPackage.lua,Congjian,TriggerSkill,src/package/power.cpp:1611,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+conquering,克复中原,skill,LordEXPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+consolidate_country,固国安邦,skill,LordEXPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+cunsi,存嗣,skill,MomentumPackage.lua,Cunsi,ZeroCardViewAsSkill,src/package/momentum.cpp:407,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+dangxian,当先,skill,LordEXPackage.lua,Dangxian,TriggerSkill,src/package/mol.cpp:536,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+danlao,啖酪,skill,LordEXPackage.lua,Danlao,TriggerSkill,src/package/mol.cpp:867,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+danshou,胆守,skill,LordEXPackage.lua,Danshou,TriggerSkill,src/package/mol.cpp:2684,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+daoshu,盗书,skill,LordEXPackage.lua,Daoshu,ZeroCardViewAsSkill,src/package/newsgs.cpp:1332,2,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+decrease,减,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+deshao,德劭,skill,LordEXPackage.lua,Deshao,TriggerSkill,src/package/newsgs.cpp:2735,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+diancai,典财,skill,TransformationPackage.lua,Diancai,TriggerSkill,src/package/transformation.cpp:1651,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+diaodu,调度,skill,TransformationPackage.lua,Diaodu,TriggerSkill,src/package/transformation.cpp:1504,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+diaogui,调归,skill,LordEXPackage.lua,Diaogui,OneCardViewAsSkill,src/package/lord-ex.cpp:1374,0,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+dimeng,缔盟,skill,StandardWuGeneral.lua,Dimeng,ViewAsSkill,src/package/standard-wu-generals.cpp:1444,0,,,,C,老项目基类 ViewAsSkill；需按 FreeKill 模板重写
+disloyalty,异,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+dismantlement,过河拆桥,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+drive,驭,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+drowning,水淹七军,skill,StrategicAdvantagePackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+duanbing,短兵,skill,StandardWuGeneral.lua,Duanbing,TriggerSkill,src/package/standard-wu-generals.cpp:1722,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+duanchang,断肠,skill,StandardQunGeneral.lua,Duanchang,TriggerSkill,src/package/standard-qun-generals.cpp:1136,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+duanliang,断粮,skill,StandardWeiGeneral.lua,Duanliang,OneCardViewAsSkill,src/package/standard-wei-generals.cpp:751,2,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+duanliang_egf,断粮,skill,PowerPackage.lua,DuanliangEGF,OneCardViewAsSkill,src/package/power.cpp:2306,1,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+duannian,断念,skill,LordEXPackage.lua,Duannian,TriggerSkill,src/package/newsgs.cpp:1394,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+duanxie,断绁,skill,MomentumPackage.lua,Duanxie,ZeroCardViewAsSkill,src/package/momentum.cpp:688,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+duel,决斗,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+dujin,独进,skill,LordEXPackage.lua,Dujin,DrawCardsSkill,src/package/mol.cpp:2269,1,,,,C,老项目基类 DrawCardsSkill；需按 FreeKill 模板重写
+duoshi,度势,skill,StandardWuGeneral.lua,Duoshi,OneCardViewAsSkill,src/package/standard-wu-generals.cpp:616,0,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+duoshi_flamemap,度势,skill,TransformationPackage.lua,DuoshiFlamemap,OneCardViewAsSkill,src/package/transformation.cpp:2198,0,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+duwu,黩武,skill,LordEXPackage.lua,DuwuViewAsSkill,ZeroCardViewAsSkill,src/package/lord-ex.cpp:3103,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+elitegeneralflag,五子良将纛,skill,PowerPackage.lua,EliteGeneralFlag,TriggerSkill,src/package/power.cpp:1851,0,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+enyuan,恩怨,skill,PowerPackage.lua,Enyuan,TriggerSkill,src/package/power.cpp:668,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+ex_nihilo,无中生有,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+fan,朱雀羽扇,general_only,StandardPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+fangquan,放权,skill,StandardShuGeneral.lua,Fangquan,TriggerSkill,src/package/standard-shu-generals.cpp:1585,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+fangyuan,方圆,skill,LordEXPackage.lua,FangyuanSummon,ArraySummonCard,src/package/lord-ex.cpp:4419,1,,,,C,老项目基类 ArraySummonCard；需按 FreeKill 模板重写
+fangzhu,放逐,skill,StandardWeiGeneral.lua,Fangzhu,MasochismSkill,src/package/standard-wei-generals.cpp:1089,3,,,,C,老项目基类 MasochismSkill；需按 FreeKill 模板重写
+fanjian,反间,skill,StandardWuGeneral.lua,Fanjian,OneCardViewAsSkill,src/package/standard-wu-generals.cpp:365,0,packages\standard\pkg\skills\fanjian.lua,是,否,A,FreeKill 已有；AI:有 测试:无；需核对中文描述是否同版本
+fankui,反馈,skill,StandardWeiGeneral.lua,Fankui,MasochismSkill,src/package/standard-wei-generals.cpp:67,3,packages\standard\pkg\skills\fankui.lua,是,是,A,FreeKill 已有；AI:有 测试:有；需核对中文描述是否同版本
+fankui_simazhao,反馈,skill,LordEXPackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+feiying,飞影,skill,FormationPackage.lua,Feiying,DistanceSkill,src/package/formation.cpp:395,0,,,,C,老项目基类 DistanceSkill；需按 FreeKill 模板重写
+fenglve,锋略,skill,LordEXPackage.lua,FenglveViewAsSkill,ZeroCardViewAsSkill,src/package/newsgs.cpp:2181,4,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+fenglvezongheng,锋略,skill,LordEXPackage.lua,FenglveZongheng,ZeroCardViewAsSkill,src/package/newsgs.cpp:2274,1,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+fengshi,锋矢,skill,MomentumPackage.lua,FengshiSummon,ArraySummonCard,src/package/momentum.cpp:939,0,,,,C,老项目基类 ArraySummonCard；需按 FreeKill 模板重写
+fengshix,锋势,skill,LordEXPackage.lua,FengshiX,TriggerSkill,src/package/lord-ex.cpp:578,4,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+fengyang,风扬,skill,LordEXPackage.lua,FengyangSummon,ArraySummonCard,src/package/lord-ex.cpp:1399,1,,,,C,老项目基类 ArraySummonCard；需按 FreeKill 模板重写
+fengying,奉迎,skill,PowerPackage.lua,Fengying,ZeroCardViewAsSkill,src/package/power.cpp:352,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+fenji,奋激,skill,StandardWuGeneral.lua,Fenji,TriggerSkill,src/package/standard-wu-generals.cpp:1126,0,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+fenming,奋命,skill,MomentumPackage.lua,Fenming,PhaseChangeSkill,src/package/momentum.cpp:708,3,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+fenxun,奋迅,skill,StandardWuGeneral.lua,FenxunViewAsSkill,OneCardViewAsSkill,src/package/standard-wu-generals.cpp:1800,0,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+field,田,general_only,FormationPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+fight_together,勠力同心,skill,StrategicAdvantagePackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+fire_attack,火攻,skill,StandardPackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+fire_slash,火杀,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+flame_map,烽火,general_only,TransformationPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+flamemap,缘江烽火图,skill,TransformationPackage.lua,FlameMapVS,OneCardViewAsSkill,src/package/transformation.cpp:1872,2,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+food,粮,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+formation,君临天下·阵,general_only,FormationPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+formation_equip,君临天下·阵,general_only,FormationPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+fudi,附敌,skill,PowerPackage.lua,Fudi,MasochismSkill,src/package/power.cpp:1546,2,,,,C,老项目基类 MasochismSkill；需按 FreeKill 模板重写
+ganglie,刚烈,skill,StandardWeiGeneral.lua,Ganglie,MasochismSkill,src/package/standard-wei-generals.cpp:191,4,packages\standard\pkg\skills\ganglie.lua,是,是,A,FreeKill 已有；AI:有 测试:有；需核对中文描述是否同版本
+ganlu,甘露,skill,PowerPackage.lua,Ganlu,ZeroCardViewAsSkill,src/package/power.cpp:1284,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+god_salvation,桃园结义,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+gongqing,公清,skill,LordEXPackage.lua,Gongqing,TriggerSkill,src/package/lord-ex.cpp:3667,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+gongxiu,共修,skill,LordEXPackage.lua,Gongxiu,DrawCardsSkill,src/package/newsgs.cpp:1517,1,,,,C,老项目基类 DrawCardsSkill；需按 FreeKill 模板重写
+guanxing,观星,skill,StandardShuGeneral.lua,Guanxing,PhaseChangeSkill,src/package/standard-shu-generals.cpp:281,1,packages\standard\pkg\skills\guanxing.lua,否,否,B,FreeKill 有技能实现但缺 AI，需把老项目 AI 移植过来
+guanxing_jiangwei,观星,skill,FormationPackage.lua,GuanxingJiangwei,PhaseChangeSkill,src/package/formation.cpp:488,0,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+guanyue,观月,skill,LordEXPackage.lua,Guanyue,PhaseChangeSkill,src/package/newsgs.cpp:1995,2,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+guicai,鬼才,skill,StandardWeiGeneral.lua,Guicai,TriggerSkill,src/package/standard-wei-generals.cpp:103,0,packages\standard\pkg\skills\guicai.lua,是,否,A,FreeKill 已有；AI:有 测试:无；需核对中文描述是否同版本
+guidao,鬼道,skill,StandardQunGeneral.lua,Guidao,TriggerSkill,src/package/standard-qun-generals.cpp:942,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+guishu,鬼术,skill,LordEXPackage.lua,GuishuViewAsSkill,OneCardViewAsSkill,src/package/mol.cpp:259,0,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+guixiu,闺秀,skill,MomentumPackage.lua,Guixiu,TriggerSkill,src/package/momentum.cpp:319,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+guizhu,鬼助,skill,LordEXPackage.lua,Guizhu,TriggerSkill,src/package/newsgs.cpp:1883,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+guose,国色,skill,StandardWuGeneral.lua,Guose,OneCardViewAsSkill,src/package/standard-wu-generals.cpp:388,1,packages\standard\pkg\skills\guose.lua,是,否,A,FreeKill 已有；AI:有 测试:无；需核对中文描述是否同版本
+guowu,帼武,skill,LordEXPackage.lua,Guowu,TriggerSkill,src/package/newsgs.cpp:2352,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+halberd,方天画戟,general_only,StrategicAdvantagePackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+haoshi,好施,skill,StandardWuGeneral.lua,Haoshi,DrawCardsSkill,src/package/standard-wu-generals.cpp:1227,1,,,,C,老项目基类 DrawCardsSkill；需按 FreeKill 模板重写
+haoshi_flamemap,好施,skill,TransformationPackage.lua,HaoshiFlamemap,DrawCardsSkill,src/package/transformation.cpp:2067,2,,,,C,老项目基类 DrawCardsSkill；需按 FreeKill 模板重写
+heavenly_army,天兵,general_only,MomentumPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+heg_nullification,无懈可击·国,skill,StandardPackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+hengjiang,横江,skill,MomentumPackage.lua,Hengjiang,MasochismSkill,src/package/momentum.cpp:151,0,,,,C,老项目基类 MasochismSkill；需按 FreeKill 模板重写
+hengzheng,横征,skill,MomentumPackage.lua,Hengzheng,PhaseChangeSkill,src/package/momentum.cpp:757,3,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+heyi,鹤翼,skill,FormationPackage.lua,HeyiSummon,ArraySummonCard,src/package/formation.cpp:320,0,,,,C,老项目基类 ArraySummonCard；需按 FreeKill 模板重写
+hongfa,弘法,skill,MomentumPackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+hongyan,红颜,skill,StandardWuGeneral.lua,HongyanFilter,FilterSkill,src/package/standard-wu-generals.cpp:908,1,,,,C,老项目基类 FilterSkill；需按 FreeKill 模板重写
+hongyuan,弘援,skill,LordEXPackage.lua,HongyuanViewAsSkill,OneCardViewAsSkill,src/package/mol.cpp:693,1,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+horse,坐骑,general_only,PowerPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+huaiyi,怀异,skill,LordEXPackage.lua,Huaiyi,ZeroCardViewAsSkill,src/package/lord-ex.cpp:3991,1,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+huangjinsymbol,黄巾天兵符,skill,MomentumPackage.lua,HuangjinSymbolViewAsSkill,OneCardViewAsSkill,src/package/momentum.cpp:1056,2,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+huanshi,缓释,skill,LordEXPackage.lua,Huanshi,TriggerSkill,src/package/mol.cpp:585,0,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+huashen,化身,skill,TransformationPackage.lua,HuashenViewAsSkill,ZeroCardViewAsSkill,src/package/transformation.cpp:574,2,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+huibian,挥鞭,skill,PowerPackage.lua,Huibian,ZeroCardViewAsSkill,src/package/power.cpp:2022,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+hunshang,魂殇,skill,MomentumPackage.lua,Hunshang,TriggerSkill,src/package/momentum.cpp:595,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+huoji,火计,skill,StandardShuGeneral.lua,Huoji,OneCardViewAsSkill,src/package/standard-shu-generals.cpp:1082,2,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+huoqi,活气,skill,LordEXPackage.lua,Huoqi,OneCardViewAsSkill,src/package/newsgs.cpp:1860,0,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+huoshou,祸首,skill,StandardShuGeneral.lua,Huoshou,TriggerSkill,src/package/standard-shu-generals.cpp:1219,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+huoshui,祸水,skill,StandardQunGeneral.lua,Huoshui,TriggerSkill,src/package/standard-qun-generals.cpp:1739,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+huyuan,护援,skill,FormationPackage.lua,HuyuanViewAsSkill,OneCardViewAsSkill,src/package/formation.cpp:252,3,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+imperial_order,敕令,skill,StrategicAdvantagePackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+imperialedictattach,放置手牌,skill,LordEXPackage.lua,ImperialEdictAttach,ViewAsSkill,src/package/lord-ex.cpp:1874,0,,,,C,老项目基类 ViewAsSkill；需按 FreeKill 模板重写
+imperialedicttrick,获得锦囊,skill,LordEXPackage.lua,ImperialEdictTrick,ZeroCardViewAsSkill,src/package/lord-ex.cpp:1797,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+increase,加,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+indulgence,乐不思蜀,skill,StandardPackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+iron_chain,铁索连环,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+is_transferable,※这张牌可以被用于发动“合纵”。,general_only,StrategicAdvantagePackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+jgbashi,拔矢,skill,JiangeDefensePackage.lua,JGBashi,TriggerSkill,src/package/jiange-defense.cpp:2107,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jgbenlei,奔雷,skill,JiangeDefensePackage.lua,JGBenlei,PhaseChangeSkill,src/package/jiange-defense.cpp:707,2,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jgbiantian,变天,skill,JiangeDefensePackage.lua,JGBiantian,TriggerSkill,src/package/jiange-defense.cpp:125,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jgchiying,持盈,skill,JiangeDefensePackage.lua,JGChiying,TriggerSkill,src/package/jiange-defense.cpp:901,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jgchuanyun,穿云,skill,JiangeDefensePackage.lua,JGChuanyun,PhaseChangeSkill,src/package/jiange-defense.cpp:965,2,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jgdanjing,啖睛,skill,JiangeDefensePackage.lua,JGDanjing,TriggerSkill,src/package/jiange-defense.cpp:2144,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jgdidong,地动,skill,JiangeDefensePackage.lua,JGDidong,PhaseChangeSkill,src/package/jiange-defense.cpp:1370,2,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jgfanshi,反噬,skill,JiangeDefensePackage.lua,JGFanshi,PhaseChangeSkill,src/package/jiange-defense.cpp:1204,0,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jgfengjian,封缄,skill,JiangeDefensePackage.lua,JGFengjian,TriggerSkill,src/package/jiange-defense.cpp:1874,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jgfengxing,风行,skill,JiangeDefensePackage.lua,JGFengxing,PhaseChangeSkill,src/package/jiange-defense.cpp:1061,2,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jggongshen,工神,skill,JiangeDefensePackage.lua,JGGongshen,PhaseChangeSkill,src/package/jiange-defense.cpp:307,2,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jghuchen,虎臣,skill,JiangeDefensePackage.lua,JGHuchen,TriggerSkill,src/package/jiange-defense.cpp:1759,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jghuodi,惑敌,skill,JiangeDefensePackage.lua,JGHuodi,PhaseChangeSkill,src/package/jiange-defense.cpp:1280,2,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jgjiaoxie,缴械,skill,JiangeDefensePackage.lua,JGJiaoxie,ZeroCardViewAsSkill,src/package/jiange-defense.cpp:2225,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+jgjiguan_baihu,机关,skill,JiangeDefensePackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+jgjiguan_bian,机关,skill,JiangeDefensePackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+jgjiguan_chiwen,机关,skill,JiangeDefensePackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+jgjiguan_qinglong,机关,skill,JiangeDefensePackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+jgjiguan_suanni,机关,skill,JiangeDefensePackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+jgjiguan_xuanwu,机关,skill,JiangeDefensePackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+jgjiguan_yazi,机关,skill,JiangeDefensePackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+jgjiguan_zhuque,机关,skill,JiangeDefensePackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+jgjingfan,惊帆,skill,JiangeDefensePackage.lua,JGJingfan,DistanceSkill,src/package/jiange-defense.cpp:944,0,,,,C,老项目基类 DistanceSkill；需按 FreeKill 模板重写
+jgjingmiao,精妙,skill,JiangeDefensePackage.lua,JGJingmiao,TriggerSkill,src/package/jiange-defense.cpp:431,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jgjizhen,激阵,skill,JiangeDefensePackage.lua,JGJizhen,PhaseChangeSkill,src/package/jiange-defense.cpp:32,1,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jgjueji,绝汲,skill,JiangeDefensePackage.lua,JGJueji,TriggerSkill,src/package/jiange-defense.cpp:1329,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jgkeding,克定,skill,JiangeDefensePackage.lua,JGKedingViewAsSkill,ViewAsSkill,src/package/jiange-defense.cpp:1980,0,,,,C,老项目基类 ViewAsSkill；需按 FreeKill 模板重写
+jgkonghun,控魂,skill,JiangeDefensePackage.lua,JGKonghun,PhaseChangeSkill,src/package/jiange-defense.cpp:1143,1,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jgleili,雷厉,skill,JiangeDefensePackage.lua,JGLeili,TriggerSkill,src/package/jiange-defense.cpp:1012,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jglianyu,炼狱,skill,JiangeDefensePackage.lua,JGLianyu,PhaseChangeSkill,src/package/jiange-defense.cpp:1411,1,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jglingfeng,灵锋,skill,JiangeDefensePackage.lua,JGLingfeng,PhaseChangeSkill,src/package/jiange-defense.cpp:74,3,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jglingyu,灵愈,skill,JiangeDefensePackage.lua,JGLingyu,PhaseChangeSkill,src/package/jiange-defense.cpp:848,0,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jglongwei,龙威,skill,JiangeDefensePackage.lua,JGLongwei,TriggerSkill,src/package/jiange-defense.cpp:2065,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jgmojian,魔箭,skill,JiangeDefensePackage.lua,JGMojian,PhaseChangeSkill,src/package/jiange-defense.cpp:648,1,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jgnailuo,奈落,skill,JiangeDefensePackage.lua,JGNailuo,PhaseChangeSkill,src/package/jiange-defense.cpp:1541,0,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jgqinzhen,亲阵,skill,JiangeDefensePackage.lua,JGQinzhen,TriggerSkill,src/package/jiange-defense.cpp:1584,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jgqiwu,栖梧,skill,JiangeDefensePackage.lua,JGQiwu,TriggerSkill,src/package/jiange-defense.cpp:500,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jgshuailing,帅令,skill,JiangeDefensePackage.lua,JGShuailing,TriggerSkill,src/package/jiange-defense.cpp:2246,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jgtanshi,贪食,skill,JiangeDefensePackage.lua,JGTanshi,PhaseChangeSkill,src/package/jiange-defense.cpp:1454,0,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jgtianjiang,天将,skill,JiangeDefensePackage.lua,JGTianjiang,TriggerSkill,src/package/jiange-defense.cpp:1807,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jgtianyu,天狱,skill,JiangeDefensePackage.lua,JGTianyu,PhaseChangeSkill,src/package/jiange-defense.cpp:559,1,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jgtianyun,天陨,skill,JiangeDefensePackage.lua,JGTianyun,PhaseChangeSkill,src/package/jiange-defense.cpp:759,2,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jgtongjun,统军,skill,JiangeDefensePackage.lua,JGTongjun,AttackRangeSkill,src/package/jiange-defense.cpp:2185,0,,,,C,老项目基类 AttackRangeSkill；需按 FreeKill 模板重写
+jgtunshi,吞噬,skill,JiangeDefensePackage.lua,JGTunshi,PhaseChangeSkill,src/package/jiange-defense.cpp:1493,1,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jgxiaorui,骁锐,skill,JiangeDefensePackage.lua,JGXiaorui,TriggerSkill,src/package/jiange-defense.cpp:1711,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jgxuanlei,玄雷,skill,JiangeDefensePackage.lua,JGXuanlei,PhaseChangeSkill,src/package/jiange-defense.cpp:1232,1,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jgyizhong,毅重,skill,JiangeDefensePackage.lua,JGYizhong,TriggerSkill,src/package/jiange-defense.cpp:812,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jgyuhuo_pangtong,浴火,skill,JiangeDefensePackage.lua,,,,2,,,,C,有 2 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+jgyuhuo_zhuque,浴火,skill,JiangeDefensePackage.lua,,,,2,,,,C,有 2 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+jgzhenwei,镇卫,skill,JiangeDefensePackage.lua,JGZhenwei,DistanceSkill,src/package/jiange-defense.cpp:686,0,,,,C,老项目基类 DistanceSkill；需按 FreeKill 模板重写
+jgzhenxi,镇西,skill,JiangeDefensePackage.lua,JGZhenxi,TriggerSkill,src/package/jiange-defense.cpp:1629,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jgzhinang,智囊,skill,JiangeDefensePackage.lua,JGZhinang,PhaseChangeSkill,src/package/jiange-defense.cpp:370,4,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jia3,+3,general_only,MomentumPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+jiahe,嘉禾,skill,TransformationPackage.lua,JiaheClear,DetachEffectSkill,src/package/transformation.cpp:2052,0,,,,C,老项目基类 DetachEffectSkill；需按 FreeKill 模板重写
+jian3,-3,general_only,MomentumPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+jianan,建安,skill,PowerPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+jianchu,鞬出,skill,StandardQunGeneral.lua,Jianchu,TriggerSkill,src/package/standard-qun-generals.cpp:790,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jiang,激昂,skill,MomentumPackage.lua,Jiang,TriggerSkill,src/package/momentum.cpp:500,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jiange_defense,守卫剑阁,general_only,JiangeDefensePackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+jianglve,将略,skill,PowerPackage.lua,Jianglve,ZeroCardViewAsSkill,src/package/power.cpp:646,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+jianguo,谏国,skill,LordEXPackage.lua,Jianguo,ZeroCardViewAsSkill,src/package/newsgs.cpp:3254,2,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+jianliang,简亮,skill,LordEXPackage.lua,Jianliang,PhaseChangeSkill,src/package/newsgs.cpp:1012,1,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jiansu,俭素,skill,LordEXPackage.lua,JiansuViewAsSkill,ViewAsSkill,src/package/mol.cpp:1445,1,,,,C,老项目基类 ViewAsSkill；需按 FreeKill 模板重写
+jianxiong,奸雄,skill,StandardWeiGeneral.lua,Jianxiong,MasochismSkill,src/package/standard-wei-generals.cpp:33,1,packages\standard\pkg\skills\jianxiong.lua,是,是,A,FreeKill 已有；AI:有 测试:有；需核对中文描述是否同版本
+jianyan,建言,skill,LordEXPackage.lua,Jianyan,ZeroCardViewAsSkill,src/package/lord-ex.cpp:5054,2,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+jieming,节命,skill,StandardWeiGeneral.lua,Jieming,MasochismSkill,src/package/standard-wei-generals.cpp:990,3,,,,C,老项目基类 MasochismSkill；需按 FreeKill 模板重写
+jieyin,结姻,skill,StandardWuGeneral.lua,Jieyin,ViewAsSkill,src/package/standard-wu-generals.cpp:666,0,packages\standard\pkg\skills\jieyin.lua,否,否,A,FreeKill 已有；AI:无 测试:无；需核对中文描述是否同版本
+jieyue,节钺,skill,PowerPackage.lua,JieyueViewAsSkill,OneCardViewAsSkill,src/package/power.cpp:462,0,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+jieyue_egf,节钺,skill,PowerPackage.lua,JieyueEGFViewAsSkill,OneCardViewAsSkill,src/package/power.cpp:2226,0,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+jihun,汲魂,skill,TransformationPackage.lua,Jihun,TriggerSkill,src/package/transformation.cpp:1161,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jijiu,急救,skill,StandardQunGeneral.lua,Jijiu,OneCardViewAsSkill,src/package/standard-qun-generals.cpp:34,3,packages\standard\pkg\skills\jijiu.lua,是,否,A,FreeKill 已有；AI:有 测试:无；需核对中文描述是否同版本
+jilei,鸡肋,skill,LordEXPackage.lua,Jilei,TriggerSkill,src/package/mol.cpp:912,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jili,蒺藜,skill,TransformationPackage.lua,Jili,TriggerSkill,src/package/transformation.cpp:1202,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jilix,寄篱,skill,LordEXPackage.lua,JiliX,TriggerSkill,src/package/lord-ex.cpp:1617,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jinfa,矜伐,skill,LordEXPackage.lua,Jinfa,OneCardViewAsSkill,src/package/lord-ex.cpp:3807,1,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+jinghe,经合,skill,LordEXPackage.lua,JingheViewAsSkill,ViewAsSkill,src/package/newsgs.cpp:1647,0,,,,C,老项目基类 ViewAsSkill；需按 FreeKill 模板重写
+jink,闪,skill,StandardPackage.lua,,,,0,packages\standard\pkg\skills\hujia.lua,否,否,A,FreeKill 已有；AI:无 测试:无；需核对中文描述是否同版本
+jinqu,进趋,skill,LordEXPackage.lua,Jinqu,PhaseChangeSkill,src/package/mol.cpp:2529,2,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jinwu,矜武,skill,LordEXPackage.lua,Jinwu,PhaseChangeSkill,src/package/mol.cpp:1920,1,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jinxian,近陷,skill,LordEXPackage.lua,Jinxian,TriggerSkill,src/package/lord-ex.cpp:4692,0,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jixi,急袭,skill,FormationPackage.lua,Jixi,OneCardViewAsSkill,src/package/formation.cpp:104,1,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+jizhao,激诏,skill,FormationPackage.lua,Jizhao,TriggerSkill,src/package/formation.cpp:1421,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jizhi,集智,skill,StandardShuGeneral.lua,Jizhi,TriggerSkill,src/package/standard-shu-generals.cpp:809,1,packages\standard\pkg\skills\jizhi.lua,是,是,A,FreeKill 已有；AI:有 测试:有；需核对中文描述是否同版本
+jubao,聚宝,skill,TransformationPackage.lua,Jubao,TriggerSkill,src/package/transformation.cpp:1772,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+juedi,绝地,skill,LordEXPackage.lua,Juedi,PhaseChangeSkill,src/package/mol.cpp:1121,3,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+juejue,决绝,skill,LordEXPackage.lua,Juejue,PhaseChangeSkill,src/package/lord-ex.cpp:4324,1,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+jujian,举荐,skill,LordEXPackage.lua,Jujian,TriggerSkill,src/package/lord-ex.cpp:4880,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+jushou,据守,skill,StandardWeiGeneral.lua,Jushou,PhaseChangeSkill,src/package/standard-wei-generals.cpp:801,0,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+juxiang,巨象,skill,StandardShuGeneral.lua,Juxiang,TriggerSkill,src/package/standard-shu-generals.cpp:1375,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+juzhan,拒战,skill,LordEXPackage.lua,Juzhan,TriggerSkill,src/package/mol.cpp:2564,4,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+kanji,勘集,skill,LordEXPackage.lua,Kanji,ZeroCardViewAsSkill,src/package/mol.cpp:3120,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+kanpo,看破,skill,StandardShuGeneral.lua,Kanpo,OneCardViewAsSkill,src/package/standard-shu-generals.cpp:1151,3,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+keji,克己,skill,StandardWuGeneral.lua,Keji,TriggerSkill,src/package/standard-wu-generals.cpp:113,1,packages\standard\pkg\skills\keji.lua,是,是,A,FreeKill 已有；AI:有 测试:有；需核对中文描述是否同版本
+kerchief,帻,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+keshou,恪守,skill,PowerPackage.lua,KeshouViewAsSkill,ViewAsSkill,src/package/power.cpp:1355,1,,,,C,老项目基类 ViewAsSkill；需按 FreeKill 模板重写
+known_both,知己知彼,skill,StandardPackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+kongcheng,空城,skill,StandardShuGeneral.lua,Kongcheng,TriggerSkill,src/package/standard-shu-generals.cpp:325,1,packages\standard\pkg\skills\kongcheng.lua,是,是,A,FreeKill 已有；AI:有 测试:有；需核对中文描述是否同版本
+kuangcai,狂才,skill,LordEXPackage.lua,Kuangcai,TriggerSkill,src/package/newsgs.cpp:665,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+kuangfu,狂斧,skill,StandardQunGeneral.lua,Kuangfu,TriggerSkill,src/package/standard-qun-generals.cpp:1619,4,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+kuanggu,狂骨,skill,StandardShuGeneral.lua,Kuanggu,TriggerSkill,src/package/standard-shu-generals.cpp:958,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+kuanggu_xh,狂骨,skill,PowerPackage.lua,KuangguXH,TriggerSkill,src/package/power.cpp:1167,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+kurou,苦肉,skill,StandardWuGeneral.lua,Kurou,OneCardViewAsSkill,src/package/standard-wu-generals.cpp:229,0,packages\standard\pkg\skills\kurou.lua,否,是,A,FreeKill 已有；AI:无 测试:有；需核对中文描述是否同版本
+leiji,雷击,skill,StandardQunGeneral.lua,Leiji,TriggerSkill,src/package/standard-qun-generals.cpp:885,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+leiji_tianshu,雷击,skill,LordEXPackage.lua,LeijiTianshu,TriggerSkill,src/package/newsgs.cpp:1719,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+letter,函,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+liangfan,量反,skill,LordEXPackage.lua,Liangfan,PhaseChangeSkill,src/package/lord-ex.cpp:82,3,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+lianhuan,连环,skill,StandardShuGeneral.lua,Lianhuan,OneCardViewAsSkill,src/package/standard-shu-generals.cpp:1002,2,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+lianpian,联翩,skill,LordEXPackage.lua,Lianpian,PhaseChangeSkill,src/package/lord-ex.cpp:4059,3,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+lianyou,莲佑,skill,LordEXPackage.lua,Lianyou,TriggerSkill,src/package/newsgs.cpp:1428,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+lianzi,敛资,skill,TransformationPackage.lua,Lianzi,OneCardViewAsSkill,src/package/transformation.cpp:1749,0,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+liegong,烈弓,skill,StandardShuGeneral.lua,Liegong,TriggerSkill,src/package/standard-shu-generals.cpp:866,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+liegong_xh,烈弓,skill,PowerPackage.lua,LiegongXH,TriggerSkill,src/package/power.cpp:1110,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+lieren,烈刃,skill,StandardShuGeneral.lua,Lieren,TriggerSkill,src/package/standard-shu-generals.cpp:1422,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+lightning,闪电,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+lijian,离间,skill,StandardQunGeneral.lua,Lijian,OneCardViewAsSkill,src/package/standard-qun-generals.cpp:319,0,packages\standard\pkg\skills\lijian.lua,否,否,A,FreeKill 已有；AI:无 测试:无；需核对中文描述是否同版本
+liuli,流离,skill,StandardWuGeneral.lua,LiuliViewAsSkill,OneCardViewAsSkill,src/package/standard-wu-generals.cpp:442,0,packages\standard\pkg\skills\liuli.lua,否,否,A,FreeKill 已有；AI:无 测试:无；需核对中文描述是否同版本
+lixia,礼下,skill,LordEXPackage.lua,Lixia,PhaseChangeSkill,src/package/lord-ex.cpp:972,3,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+longdan,龙胆,skill,StandardShuGeneral.lua,Longdan,OneCardViewAsSkill,src/package/standard-shu-generals.cpp:413,1,packages\standard\pkg\skills\longdan.lua,是,否,A,FreeKill 已有；AI:有 测试:无；需核对中文描述是否同版本
+longdan_xh,龙胆,skill,PowerPackage.lua,LongdanXH,OneCardViewAsSkill,src/package/power.cpp:1054,1,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+lord_ex,君临天下·EX,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+lord_ex_card,君临天下·EX,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+luanji,乱击,skill,StandardQunGeneral.lua,LuanjiViewAsSkill,ViewAsSkill,src/package/standard-qun-generals.cpp:378,0,,,,C,老项目基类 ViewAsSkill；需按 FreeKill 模板重写
+luanwu,乱武,skill,StandardQunGeneral.lua,Luanwu,ZeroCardViewAsSkill,src/package/standard-qun-generals.cpp:695,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+lundao,论道,skill,LordEXPackage.lua,Lundao,MasochismSkill,src/package/newsgs.cpp:1953,2,,,,C,老项目基类 MasochismSkill；需按 FreeKill 模板重写
+luoshen,洛神,skill,StandardWeiGeneral.lua,Luoshen,TriggerSkill,src/package/standard-wei-generals.cpp:446,1,packages\standard\pkg\skills\luoshen.lua,否,是,B,FreeKill 有技能实现但缺 AI，需把老项目 AI 移植过来
+luoyi,裸衣,skill,StandardWeiGeneral.lua,Luoyi,TriggerSkill,src/package/standard-wei-generals.cpp:293,2,packages\standard\pkg\skills\luoyi.lua,否,是,B,FreeKill 有技能实现但缺 AI，需把老项目 AI 移植过来
+lure_tiger,调虎离山,skill,StrategicAdvantagePackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+lure_tiger_effect,调虎离山,general_only,StrategicAdvantagePackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+manoeuvre,纵横捭阖,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+mashu_machao,马术,general_only,StandardShuGeneral.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+mashu_madai,马术,general_only,MomentumPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+mashu_mateng,马术,general_only,StandardQunGeneral.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+mashu_maxiumatie,马术,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+mashu_pangde,马术,general_only,StandardQunGeneral.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+massacre,戮,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+midao,米道,skill,LordEXPackage.lua,MidaoViewAsSkill,OneCardViewAsSkill,src/package/lord-ex.cpp:456,1,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+miewu,灭吴,skill,LordEXPackage.lua,Miewu,OneCardViewAsSkill,src/package/mol.cpp:161,1,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+mingfa,明伐,skill,LordEXPackage.lua,MingfaViewAsSkill,ZeroCardViewAsSkill,src/package/newsgs.cpp:2830,2,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+mingfazongheng,明伐,skill,LordEXPackage.lua,MingfaZongheng,OneCardViewAsSkill,src/package/newsgs.cpp:2957,0,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+mingshi,名士,skill,StandardQunGeneral.lua,Mingshi,TriggerSkill,src/package/standard-qun-generals.cpp:1310,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+mingzhe,明哲,skill,LordEXPackage.lua,Mingzhe,TriggerSkill,src/package/mol.cpp:808,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+momentum,君临天下·势,general_only,MomentumPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+momentum_equip,君临天下·势,general_only,MomentumPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+money,金,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+mouduan,谋断,skill,StandardWuGeneral.lua,Mouduan,PhaseChangeSkill,src/package/standard-wu-generals.cpp:168,3,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+moukui,谋溃,skill,LordEXPackage.lua,Moukui,TriggerSkill,src/package/mol.cpp:1186,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+newsgs,十周年专属,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+niaoxiang,鸟翔,skill,FormationPackage.lua,NiaoxiangSummon,ArraySummonCard,src/package/formation.cpp:817,0,,,,C,老项目基类 ArraySummonCard；需按 FreeKill 模板重写
+niepan,涅槃,skill,StandardShuGeneral.lua,Niepan,TriggerSkill,src/package/standard-shu-generals.cpp:1021,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+no,否,general_only,PowerPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+nullification,无懈可击·普,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+overseas,国际服专属,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+paiyi,排异,skill,LordEXPackage.lua,Paiyi,OneCardViewAsSkill,src/package/lord-ex.cpp:1158,0,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+paoxiao,咆哮,skill,StandardShuGeneral.lua,Paoxiao,TriggerSkill,src/package/standard-shu-generals.cpp:231,1,packages\standard\pkg\skills\paoxiao.lua,否,否,B,FreeKill 有技能实现但缺 AI，需把老项目 AI 移植过来
+paoxiao_xh,咆哮,skill,PowerPackage.lua,PaoxiaoXH,TriggerSkill,src/package/power.cpp:1007,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+peach,桃,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+power,君临天下·权,general_only,PowerPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+power_equip,君临天下·权,general_only,PowerPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+power_pile,权,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+qiangxi,强袭,skill,StandardWeiGeneral.lua,Qiangxi,ViewAsSkill,src/package/standard-wei-generals.cpp:892,1,,,,C,老项目基类 ViewAsSkill；需按 FreeKill 模板重写
+qianhuan,千幻,skill,FormationPackage.lua,QianhuanVS,OneCardViewAsSkill,src/package/formation.cpp:987,1,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+qianxi,潜袭,skill,MomentumPackage.lua,Qianxi,TriggerSkill,src/package/momentum.cpp:249,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+qianxun,谦逊,skill,StandardWuGeneral.lua,Qianxun,TriggerSkill,src/package/standard-wu-generals.cpp:541,1,packages\standard\pkg\skills\qianxun.lua,否,是,B,FreeKill 有技能实现但缺 AI，需把老项目 AI 移植过来
+qianzheng,愆正,skill,LordEXPackage.lua,QianzhengViewAsSkill,ViewAsSkill,src/package/mol.cpp:3141,0,,,,C,老项目基类 ViewAsSkill；需按 FreeKill 模板重写
+qiao,气傲,skill,LordEXPackage.lua,Qiao,TriggerSkill,src/package/newsgs.cpp:544,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+qiaobian_draw,巧变,skill,StandardWeiGeneral.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+qiaobian_egf,巧变,skill,PowerPackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+qiaobian_play,巧变,skill,StandardWeiGeneral.lua,,,,2,,,,C,有 2 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+qicai,奇才,skill,StandardShuGeneral.lua,Qicai,TargetModSkill,src/package/standard-shu-generals.cpp:846,0,packages\standard\pkg\skills\qicai.lua,否,是,A,FreeKill 已有；AI:无 测试:有；需核对中文描述是否同版本
+qice,奇策,skill,TransformationPackage.lua,Qice,ZeroCardViewAsSkill,src/package/transformation.cpp:183,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+qiluan,戚乱,skill,FormationPackage.lua,Qiluan,TriggerSkill,src/package/formation.cpp:1215,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+qingcheng,倾城,skill,StandardQunGeneral.lua,Qingcheng,OneCardViewAsSkill,src/package/standard-qun-generals.cpp:1922,1,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+qingguo,倾国,skill,StandardWeiGeneral.lua,Qingguo,OneCardViewAsSkill,src/package/standard-wei-generals.cpp:503,2,packages\standard\pkg\skills\qingguo.lua,是,否,A,FreeKill 已有；AI:有 测试:无；需核对中文描述是否同版本
+qingshi,倾势,skill,LordEXPackage.lua,Qingshi,TriggerSkill,src/package/newsgs.cpp:3276,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+qingyin,清隐,skill,LordEXPackage.lua,Qingyin,ZeroCardViewAsSkill,src/package/lord-ex.cpp:4301,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+qiuan,求安,skill,LordEXPackage.lua,Qiuan,TriggerSkill,src/package/lord-ex.cpp:40,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+qixi,奇袭,skill,StandardWuGeneral.lua,Qixi,OneCardViewAsSkill,src/package/standard-wu-generals.cpp:90,1,packages\standard\pkg\skills\qixi.lua,是,否,A,FreeKill 已有；AI:有 测试:无；需核对中文描述是否同版本
+qizhi,奇制,skill,LordEXPackage.lua,Qizhi,TriggerSkill,src/package/mol.cpp:2467,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+quanji,权计,skill,LordEXPackage.lua,Quanji,TriggerSkill,src/package/lord-ex.cpp:1075,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+quanjia,劝驾,skill,LordEXPackage.lua,Quanjia,TriggerSkill,src/package/mol.cpp:2062,0,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+quanjian,劝谏,skill,LordEXPackage.lua,Quanjian,ZeroCardViewAsSkill,src/package/newsgs.cpp:3363,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+quanjin,劝进,skill,LordEXPackage.lua,Quanjin,OneCardViewAsSkill,src/package/lord-ex.cpp:1219,0,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+quhu,驱虎,skill,StandardWeiGeneral.lua,Quhu,ZeroCardViewAsSkill,src/package/standard-wei-generals.cpp:970,4,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+rende,仁德,skill,StandardShuGeneral.lua,RendeViewAsSkill,ViewAsSkill,src/package/standard-shu-generals.cpp:96,0,packages\standard\pkg\skills\rende.lua,否,否,A,FreeKill 已有；AI:无 测试:无；需核对中文描述是否同版本
+rende_basic,仁德,skill,StandardShuGeneral.lua,RendeBasic,ZeroCardViewAsSkill,src/package/standard-shu-generals.cpp:34,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+rice,米,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+rule_the_world,号令天下,skill,LordEXPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+rule_the_world_discard,弃置,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+rule_the_world_getcard,获得,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+rule_the_world_slash,弃置一张牌并,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+sanyao,散谣,skill,TransformationPackage.lua,Sanyao,OneCardViewAsSkill,src/package/transformation.cpp:1267,0,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+savage_assault,南蛮入侵,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+scars,创,general_only,StandardWuGeneral.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+shangyi,尚义,skill,FormationPackage.lua,Shangyi,ZeroCardViewAsSkill,src/package/formation.cpp:801,1,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+shejian,舌剑,skill,LordEXPackage.lua,Shejian,TriggerSkill,src/package/newsgs.cpp:768,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+shelie,涉猎,skill,TransformationPackage.lua,Shelie,PhaseChangeSkill,src/package/transformation.cpp:2151,2,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+shengxi,生息,skill,FormationPackage.lua,Shengxi,TriggerSkill,src/package/formation.cpp:591,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+shensu,神速,skill,StandardWeiGeneral.lua,ShensuViewAsSkill,ViewAsSkill,src/package/standard-wei-generals.cpp:548,1,,,,C,老项目基类 ViewAsSkill；需按 FreeKill 模板重写
+shenwei,神威,skill,LordEXPackage.lua,Shenwei,DrawCardsSkill,src/package/newsgs.cpp:2679,1,,,,C,老项目基类 DrawCardsSkill；需按 FreeKill 模板重写
+shenzhi,神智,skill,StandardShuGeneral.lua,Shenzhi,PhaseChangeSkill,src/package/standard-shu-generals.cpp:1681,1,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+shicai,恃才,skill,LordEXPackage.lua,Shicai,TriggerSkill,src/package/lord-ex.cpp:2659,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+shigong,示恭,skill,LordEXPackage.lua,Shigong,TriggerSkill,src/package/mol.cpp:1772,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+shilu,嗜戮,skill,LordEXPackage.lua,ShiluViewAsSkill,ViewAsSkill,src/package/lord-ex.cpp:3154,1,,,,C,老项目基类 ViewAsSkill；需按 FreeKill 模板重写
+shiyong,恃勇,skill,LordEXPackage.lua,Shiyong,TriggerSkill,src/package/mol.cpp:1649,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+shoucheng,守成,skill,FormationPackage.lua,Shoucheng,TriggerSkill,src/package/formation.cpp:630,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+shouyue,授钺,skill,FormationPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+shuangren,双刃,skill,StandardQunGeneral.lua,Shuangren,PhaseChangeSkill,src/package/standard-qun-generals.cpp:1426,3,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+shuliang,输粮,skill,LordEXPackage.lua,Shuliang,TriggerSkill,src/package/mol.cpp:2222,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+shushen,淑慎,skill,StandardShuGeneral.lua,Shushen,TriggerSkill,src/package/standard-shu-generals.cpp:1617,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+sidi,司敌,skill,LordEXPackage.lua,Sidi,TriggerSkill,src/package/mol.cpp:373,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+sidi_invalidity,司敌,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+sidi_limit,司敌,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+sijian,死谏,skill,StandardQunGeneral.lua,Sijian,TriggerSkill,src/package/standard-qun-generals.cpp:1508,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+slash,普杀,skill,StandardPackage.lua,,,,1,packages\standard_cards\pkg\skills\collateral.lua,否,否,B,FreeKill 有技能实现但缺 AI，需把老项目 AI 移植过来
+snatch,顺手牵羊,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+sorcery,幻,general_only,FormationPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+soul,魂,general_only,TransformationPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+standard,标准版,general_only,StandardGeneralPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+standard_cards,标准版,general_only,StandardPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+strategic_advantage,君临天下·势备篇,general_only,StrategicAdvantagePackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+suishi,随势,skill,StandardQunGeneral.lua,Suishi,TriggerSkill,src/package/standard-qun-generals.cpp:1567,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+supply_shortage,兵粮寸断,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+suzhi,夙智,skill,LordEXPackage.lua,Suzhi,TriggerSkill,src/package/lord-ex.cpp:2390,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+tanfeng,探锋,skill,LordEXPackage.lua,Tanfeng,PhaseChangeSkill,src/package/mol.cpp:1850,3,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+test,测试,general_only,StandardGeneralPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+threaten_emperor,挟天子以令诸侯,skill,StrategicAdvantagePackage.lua,ThreatenEmperorSkill,TriggerSkill,src/package/strategic-advantage.cpp:1092,0,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+thunder_slash,雷杀,skill,StandardPackage.lua,,,,0,,,,card,卡牌名（有描述但无技能类），随卡牌一起移植
+tiandu,天妒,skill,StandardWeiGeneral.lua,Tiandu,TriggerSkill,src/package/standard-wei-generals.cpp:377,1,packages\standard\pkg\skills\tiandu.lua,否,是,B,FreeKill 有技能实现但缺 AI，需把老项目 AI 移植过来
+tianfu,天覆,skill,FormationPackage.lua,TianfuSummon,ArraySummonCard,src/package/formation.cpp:522,0,,,,C,老项目基类 ArraySummonCard；需按 FreeKill 模板重写
+tianxiang,天香,skill,StandardWuGeneral.lua,TianxiangViewAsSkill,OneCardViewAsSkill,src/package/standard-wu-generals.cpp:808,1,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+tianyi,天义,skill,StandardWuGeneral.lua,Tianyi,ZeroCardViewAsSkill,src/package/standard-wu-generals.cpp:1004,1,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+tiaoxin,挑衅,skill,FormationPackage.lua,Tiaoxin,ZeroCardViewAsSkill,src/package/formation.cpp:430,1,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+tieqi,铁骑,skill,StandardShuGeneral.lua,Tieqi,TriggerSkill,src/package/standard-shu-generals.cpp:667,2,packages\standard\pkg\skills\tieqi.lua,是,否,A,FreeKill 已有；AI:有 测试:无；需核对中文描述是否同版本
+tieqi_xh,铁骑,skill,PowerPackage.lua,,,,2,,,,C,有 2 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+tongdu,统度,skill,LordEXPackage.lua,Tongdu,PhaseChangeSkill,src/package/lord-ex.cpp:4182,2,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+tongling,通令,skill,LordEXPackage.lua,Tongling,TriggerSkill,src/package/lord-ex.cpp:4619,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+transfer,合纵,general_only,StrategicAdvantagePackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+transform,变更,skill,TransformationPackage.lua,,,,2,,,,C,有 2 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+transformation,君临天下·变,general_only,TransformationPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+transformation_equip,君临天下·变,general_only,TransformationPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+tribladeskill,三尖两刃刀,general_only,StandardPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+tujue,途绝,skill,LordEXPackage.lua,Tujue,TriggerSkill,src/package/newsgs.cpp:3414,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+tunchu,屯储,skill,LordEXPackage.lua,Tunchu,DrawCardsSkill,src/package/mol.cpp:2152,1,,,,C,老项目基类 DrawCardsSkill；需按 FreeKill 模板重写
+tunjiang,屯江,skill,LordEXPackage.lua,Tunjiang,PhaseChangeSkill,src/package/lord-ex.cpp:906,1,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+tuntian,屯田,skill,FormationPackage.lua,Tuntian,TriggerSkill,src/package/formation.cpp:35,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+tuxi,突袭,skill,StandardWeiGeneral.lua,Tuxi,DrawCardsSkill,src/package/standard-wei-generals.cpp:236,1,packages\standard\pkg\skills\tuxi.lua,是,是,A,FreeKill 已有；AI:有 测试:有；需核对中文描述是否同版本
+tuxi_egf,突袭,skill,PowerPackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+wanggui,望归,skill,LordEXPackage.lua,Wanggui,TriggerSkill,src/package/newsgs.cpp:37,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+wanglie,往烈,skill,LordEXPackage.lua,Wanglie,TriggerSkill,src/package/mol.cpp:966,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+wangxi,忘隙,skill,MomentumPackage.lua,Wangxi,TriggerSkill,src/package/momentum.cpp:89,0,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+wansha,完杀,skill,StandardQunGeneral.lua,Wansha,TriggerSkill,src/package/standard-qun-generals.cpp:604,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+wanwei,挽危,skill,TransformationPackage.lua,Wanwei,TriggerSkill,src/package/transformation.cpp:262,4,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+weicheng,伪诚,skill,LordEXPackage.lua,Weicheng,TriggerSkill,src/package/newsgs.cpp:1206,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+weidi,伪帝,skill,PowerPackage.lua,Weidi,ZeroCardViewAsSkill,src/package/power.cpp:1701,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+weimeng,危盟,skill,LordEXPackage.lua,WeimengViewAsSkill,ZeroCardViewAsSkill,src/package/newsgs.cpp:1102,3,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+weimengzongheng,危盟,skill,LordEXPackage.lua,WeimengZongheng,ZeroCardViewAsSkill,src/package/newsgs.cpp:1185,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+weimu,帷幕,skill,StandardQunGeneral.lua,Weimu,TriggerSkill,src/package/standard-qun-generals.cpp:717,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+wendao,问道,skill,MomentumPackage.lua,Wendao,OneCardViewAsSkill,src/package/momentum.cpp:1255,0,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+wenji,问计,skill,LordEXPackage.lua,Wenji,PhaseChangeSkill,src/package/lord-ex.cpp:710,1,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+wooden_ox,辎,general_only,StrategicAdvantagePackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+wuku,武库,skill,LordEXPackage.lua,Wuku,TriggerSkill,src/package/mol.cpp:36,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+wusheng,武圣,skill,StandardShuGeneral.lua,Wusheng,OneCardViewAsSkill,src/package/standard-shu-generals.cpp:153,2,packages\standard\pkg\skills\wusheng.lua,是,否,A,FreeKill 已有；AI:有 测试:无；需核对中文描述是否同版本
+wusheng_xh,武圣,skill,PowerPackage.lua,WushengXH,OneCardViewAsSkill,src/package/power.cpp:964,2,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+wushuang,无双,skill,StandardQunGeneral.lua,Wushuang,TriggerSkill,src/package/standard-qun-generals.cpp:141,2,packages\standard\pkg\skills\wushuang.lua,否,否,B,FreeKill 有技能实现但缺 AI，需把老项目 AI 移植过来
+wushuang_lvlingqi,无双,skill,LordEXPackage.lua,WushuangLvlingqi,TriggerSkill,src/package/newsgs.cpp:2514,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+wuxin,悟心,skill,MomentumPackage.lua,Wuxin,PhaseChangeSkill,src/package/momentum.cpp:1004,1,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+wuyan,无言,skill,LordEXPackage.lua,Wuyan,TriggerSkill,src/package/lord-ex.cpp:4930,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+xiangle,享乐,skill,StandardShuGeneral.lua,Xiangle,TriggerSkill,src/package/standard-shu-generals.cpp:1469,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+xianshou,仙授,skill,LordEXPackage.lua,Xianshou,ZeroCardViewAsSkill,src/package/newsgs.cpp:1930,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+xiaoguo,骁果,skill,StandardWeiGeneral.lua,Xiaoguo,PhaseChangeSkill,src/package/standard-wei-generals.cpp:1136,1,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+xiaoguo_egf,骁果,general_only,PowerPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+xiaoji,枭姬,skill,StandardWuGeneral.lua,Xiaoji,TriggerSkill,src/package/standard-wu-generals.cpp:698,2,packages\standard\pkg\skills\xiaoji.lua,是,是,A,FreeKill 已有；AI:有 测试:有；需核对中文描述是否同版本
+xiaojidraw,枭姬,general_only,StandardWuGeneral.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+xiaoqi,骁骑,skill,LordEXPackage.lua,XiaoqiViewAsSkill,ZeroCardViewAsSkill,src/package/mol.cpp:2977,1,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+xibing,息兵,skill,LordEXPackage.lua,Xibing,TriggerSkill,src/package/newsgs.cpp:133,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+xinghuo,兴火,skill,LordEXPackage.lua,Xinghuo,TriggerSkill,src/package/newsgs.cpp:1473,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+xingshang,行殇,skill,StandardWeiGeneral.lua,Xingshang,TriggerSkill,src/package/standard-wei-generals.cpp:1046,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+xingzhao,兴棹,skill,LordEXPackage.lua,Xingzhao,TriggerSkill,src/package/lord-ex.cpp:208,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+xinsheng,新生,skill,TransformationPackage.lua,Xinsheng,MasochismSkill,src/package/transformation.cpp:756,1,,,,C,老项目基类 MasochismSkill；需按 FreeKill 模板重写
+xiongnve,凶虐,skill,LordEXPackage.lua,Xiongnve,TriggerSkill,src/package/lord-ex.cpp:3294,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+xiongnve_avoid,凶虐减伤,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+xiongsuan,凶算,skill,TransformationPackage.lua,Xiongsuan,OneCardViewAsSkill,src/package/transformation.cpp:501,1,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+xiongyi,雄异,skill,StandardQunGeneral.lua,Xiongyi,ZeroCardViewAsSkill,src/package/standard-qun-generals.cpp:1288,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+xishe,袭射,skill,LordEXPackage.lua,Xishe,TriggerSkill,src/package/lord-ex.cpp:3834,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+xuanhuo,眩惑,skill,PowerPackage.lua,Xuanhuo,TriggerSkill,src/package/power.cpp:753,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+xuanhuoattach,眩惑,skill,PowerPackage.lua,XuanhuoAttachVS,OneCardViewAsSkill,src/package/power.cpp:889,0,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+xuanlue,旋略,skill,TransformationPackage.lua,Xuanlue,TriggerSkill,src/package/transformation.cpp:1378,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+xunxun,恂恂,skill,MomentumPackage.lua,Xunxun,PhaseChangeSkill,src/package/momentum.cpp:30,2,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+xunxun_tangzi,恂恂,skill,LordEXPackage.lua,,,,2,,,,C,有 2 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+yaner,燕尔,skill,LordEXPackage.lua,Yaner,TriggerSkill,src/package/newsgs.cpp:3605,0,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+yanzheng,言政,skill,LordEXPackage.lua,Yanzheng,PhaseChangeSkill,src/package/newsgs.cpp:2032,1,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+yaowu,耀武,skill,LordEXPackage.lua,Yaowu,TriggerSkill,src/package/mol.cpp:1569,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+yechou,业仇,skill,LordEXPackage.lua,Yechou,TriggerSkill,src/package/mol.cpp:2875,0,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+yes,是,general_only,PowerPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+yicheng,疑城,skill,FormationPackage.lua,Yicheng,TriggerSkill,src/package/formation.cpp:881,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+yigui,役鬼,skill,TransformationPackage.lua,YiguiViewAsSkill,ZeroCardViewAsSkill,src/package/transformation.cpp:917,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+yinbing,阴兵,skill,LordEXPackage.lua,Yinbing,TriggerSkill,src/package/newsgs.cpp:1776,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+yinbingx,引兵,skill,LordEXPackage.lua,YinbingX,PhaseChangeSkill,src/package/mol.cpp:1034,2,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+yingyang,鹰扬,skill,MomentumPackage.lua,Yingyang,TriggerSkill,src/package/momentum.cpp:541,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+yingzi_flamemap,英姿,skill,TransformationPackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+yingzi_sunce,英姿,skill,MomentumPackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+yingzi_zhouyu,英姿,skill,StandardWuGeneral.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+yishe,义舍,general_only,LordEXPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+yizhi,遗志,skill,FormationPackage.lua,Yizhi,TriggerSkill,src/package/formation.cpp:450,0,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+yongjin,勇进,skill,TransformationPackage.lua,Yongjin,ZeroCardViewAsSkill,src/package/transformation.cpp:1480,0,,,,C,老项目基类 ZeroCardViewAsSkill；需按 FreeKill 模板重写
+yongjue,勇决,skill,MomentumPackage.lua,Yongjue,TriggerSkill,src/package/momentum.cpp:445,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+yongsi,庸肆,skill,PowerPackage.lua,Yongsi,TriggerSkill,src/package/power.cpp:1759,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+youyan,诱言,skill,LordEXPackage.lua,Youyan,TriggerSkill,src/package/newsgs.cpp:2978,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+yuanyu,远域,skill,LordEXPackage.lua,Yuanyu,TriggerSkill,src/package/mol.cpp:330,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+yuejian,约俭,skill,TransformationPackage.lua,Yuejian,TriggerSkill,src/package/transformation.cpp:383,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+yusui,玉碎,skill,LordEXPackage.lua,Yusui,TriggerSkill,src/package/newsgs.cpp:843,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+zaiqi,再起,skill,StandardShuGeneral.lua,Zaiqi,TriggerSkill,src/package/standard-shu-generals.cpp:1277,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+zaoyun,凿运,skill,LordEXPackage.lua,ZaoyunViewAsSkill,ViewAsSkill,src/package/lord-ex.cpp:1267,0,,,,C,老项目基类 ViewAsSkill；需按 FreeKill 模板重写
+zhangwu,章武,skill,FormationPackage.lua,Zhangwu,TriggerSkill,src/package/formation.cpp:1255,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+zhaoxin,昭心,skill,LordEXPackage.lua,Zhaoxin,MasochismSkill,src/package/lord-ex.cpp:2527,1,,,,C,老项目基类 MasochismSkill；需按 FreeKill 模板重写
+zhendu,鸩毒,skill,FormationPackage.lua,Zhendu,TriggerSkill,src/package/formation.cpp:1158,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+zhengbi,征辟,skill,PowerPackage.lua,ZhengbiViewAsSkill,ViewAsSkill,src/package/power.cpp:151,0,,,,C,老项目基类 ViewAsSkill；需按 FreeKill 模板重写
+zhente,贞特,skill,LordEXPackage.lua,Zhente,TriggerSkill,src/package/newsgs.cpp:232,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+zhenxi,震袭,skill,LordEXPackage.lua,Zhenxi,TriggerSkill,src/package/mol.cpp:1324,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+zhidao,雉盗,skill,LordEXPackage.lua,Zhidao,PhaseChangeSkill,src/package/lord-ex.cpp:1481,3,,,,C,老项目基类 PhaseChangeSkill；需按 FreeKill 模板重写
+zhiheng,制衡,skill,StandardWuGeneral.lua,Zhiheng,ViewAsSkill,src/package/standard-wu-generals.cpp:56,0,packages\standard\pkg\skills\zhiheng.lua,是,否,A,FreeKill 已有；AI:有 测试:无；需核对中文描述是否同版本
+zhihenglp,制衡,general_only,TransformationPackage.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+zhijian,直谏,skill,StandardWuGeneral.lua,Zhijian,OneCardViewAsSkill,src/package/standard-wu-generals.cpp:1498,1,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+zhiman,制蛮,skill,TransformationPackage.lua,Zhiman,TriggerSkill,src/package/transformation.cpp:1290,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+zhiren,织纴,skill,LordEXPackage.lua,Zhiren,TriggerSkill,src/package/newsgs.cpp:3478,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+zhiwei,至微,skill,LordEXPackage.lua,Zhiwei,TriggerSkill,src/package/newsgs.cpp:304,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+zhiyu,智愚,skill,TransformationPackage.lua,Zhiyu,MasochismSkill,src/package/transformation.cpp:37,2,,,,C,老项目基类 MasochismSkill；需按 FreeKill 模板重写
+zhuangrong,妆戎,skill,LordEXPackage.lua,ZhuangrongViewAsSkill,OneCardViewAsSkill,src/package/newsgs.cpp:2636,0,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+zhuidu,追妒,skill,LordEXPackage.lua,Zhuidu,TriggerSkill,src/package/mol.cpp:1700,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+zhuidu_choice,追妒,skill,LordEXPackage.lua,,,,1,,,,C,有 1 个 AI hook 但 C++ 未定位到；按 AI 反推实现
+zhuihuan,追还,skill,LordEXPackage.lua,Zhuihuan,TriggerSkill,src/package/newsgs.cpp:3062,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+zhuke,筑科,skill,LordEXPackage.lua,Zhuke,TriggerSkill,src/package/mol.cpp:1975,2,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+zhukou,逐寇,skill,LordEXPackage.lua,Zhukou,TriggerSkill,src/package/newsgs.cpp:1353,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+zhuwei,筑围,skill,PowerPackage.lua,Zhuwei,TriggerSkill,src/package/power.cpp:1451,3,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+ziliang,资粮,skill,FormationPackage.lua,ZiliangVS,OneCardViewAsSkill,src/package/formation.cpp:141,0,,,,C,老项目基类 OneCardViewAsSkill；需按 FreeKill 模板重写
+zisui,恣睢,skill,LordEXPackage.lua,Zisui,TriggerSkill,src/package/lord-ex.cpp:4012,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写
+zither,琴,general_only,StandardShuGeneral.lua,,,,0,,,,—,武将名，老项目有 FreeKill 无
+zongyu,总御,skill,PowerPackage.lua,Zongyu,TriggerSkill,src/package/power.cpp:2042,1,,,,C,老项目基类 TriggerSkill；需按 FreeKill 模板重写

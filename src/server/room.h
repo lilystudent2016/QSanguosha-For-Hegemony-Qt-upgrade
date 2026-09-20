@@ -194,6 +194,15 @@ public:
     bool doRequest(ServerPlayer *player, QSanProtocol::CommandType command, const QVariant &arg, time_t timeOut, bool wait);
     bool doRequest(ServerPlayer *player, QSanProtocol::CommandType command, const QVariant &arg, bool wait);
 
+    // ── [A1 补丁 2026-09-19] 影子请求（只写录像，不等回话）──────────────────────
+    // 机器人席位的决策由服务端 AI 直接算出，不走 doRequest ⇒ 录像里完全没有该席位
+    // 的决策报文（实测 A1 录像零 PLAY_CARD/RESPONSE_CARD/ASK_PEACH/DISCARD）。
+    // 本函数按 doRequest 的报文格式（desc=1041）补发一条「请求」，唯一接收方是 recorder
+    // —— ServerPlayer::unicast 无条件喂 recorder，而 message_ready 只在挂 socket 时
+    // connect（setSocket(NULL) 会显式断开）⇒ 机器人席位的对局行为零影响。
+    // 范式同 askForNullification 里既有的无条件广播 packet+unicast。
+    void recordShadowRequest(ServerPlayer *player, QSanProtocol::CommandType command, const QVariant &arg);
+
     // Broadcast a request to a list of players and get the client responses. Call is blocking until all client
     // replies or server times out, whichever is earlier. Check each player's m_isClientResponseReady to see if a valid
     // result has been received. The client response can be accessed by calling each player's getClientReply() function.
@@ -471,6 +480,8 @@ public:
     void pauseCommand(ServerPlayer *player, const QVariant &arg = QVariant());
     void addRobotCommand(ServerPlayer *player, const QVariant &arg = QVariant());
     void fillRobotsCommand(ServerPlayer *player, const QVariant &arg = QVariant());
+    // ── [A1 补丁 2026-09-19] 无头自对弈：填满机器人 + 全席开始录像 + 启动对局 ──
+    void autoplayFillRobots();
     void mirrorGuanxingStepCommand(ServerPlayer *player, const QVariant &arg);
     void mirrorMoveCardsStepCommand(ServerPlayer *player, const QVariant &arg);
     void onPindianReply(ServerPlayer *, const QVariant &arg);
@@ -622,6 +633,7 @@ private:
     QList<ServerPlayer *> m_players, m_alivePlayers;
     QStringList used_general;
     int player_count;
+    bool m_autoplayWait;   // [A1 补丁] autoplayFillRobots 填员期间抑制「满员即 start()」
     ServerPlayer *current;
     QList<int> pile1, pile2;
     QList<int> table_cards;

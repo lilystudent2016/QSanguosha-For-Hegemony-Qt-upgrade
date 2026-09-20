@@ -59,6 +59,15 @@ sgs.ai_skill_use_func.GuishuCard = function(card, use, self)
     if self.player:isCardLimited(guishucard, sgs.Card_MethodUse) then
         return
     end
+    -- ── [A1 修复 2026-09-20 · 家族B 活锁] ────────────────────────────────
+    -- C++ 的 GuishuCard::targetFilter / targetsFeasible 读 Self->tag["guishu"]（mol.cpp:208/230），
+    -- 而该 tag **原本只由 UI 层写入**（dashboard.cpp:1749 / guhuobox.cpp:346 / selectbox.cpp:110），
+    -- 即只有人类点按钮时才设。AI 路径绕开 UI ⇒ tag 恒空 ⇒ cloneCard("") 返回 null
+    -- ⇒ targetsFeasible 恒 false ⇒ 房间反复重问同一张鬼术卡 ⇒ 活锁（每秒刷 5~8 条日志）。
+    -- 修法：在 AI 路径补写该 tag，语义与 UI 完全一致，不改任何规则。
+    if userstring and userstring ~= "" then
+        self.player:setTag("guishu", sgs.QVariant(userstring))
+    end
     self:useCardByClassName(guishucard, use)--确保能使用
     if use.card then--and use.to and not use.to:isEmpty() 如果有use.to会使用虚拟牌，为何？
 		Global_room:writeToConsole("鬼术卡使用:"..userstring)
@@ -618,9 +627,24 @@ sgs.ai_skill_invoke.danlao = function(self, data)
 	end
 end
 
+-- ── [A1 修复 2026-09-20 · 家族C 栈溢出] ─────────────────────────────────
+-- 事故栈：askForSkillInvoke(smart-ai.lua:2678) → 本函数 → isFriend(:2115)
+--          →（C++ 回调）→ pcall(:284) → askForSkillInvoke(:2678) → … ⟲
+-- 即 isFriend 内部会经 C++ 再次触发技能询问而回到本函数 ⇒ Lua↔C 交替递归耗尽 C 栈
+-- ⇒ 0xC00000FD（pcall 物理上捕不到）。修法 = 在本函数断环，不动 smart-ai.lua。
+local jilei_invoking = false
 sgs.ai_skill_invoke.jilei = function(self, data)
+	if jilei_invoking then return false end
+	jilei_invoking = true
 	local damage = data:toDamage()
-	return not self:isFriend(damage.from)
+	local ret
+	if damage and damage.from then
+		ret = not self:isFriend(damage.from)
+	else
+		ret = true
+	end
+	jilei_invoking = false
+	return ret
 end
 
 sgs.ai_skill_choice.jilei = function(self, choices, data)
@@ -856,8 +880,16 @@ sgs.ai_skill_invoke.jiansu = true
 sgs.ai_skill_use["@@jiansu"] = function(self, prompt, method)
     local money_cards = {}
     local str_ids = self.player:property("jiansu_record"):toString():split("+")
+    -- ── [A1 修复 2026-09-20 · 唯一的 Lua 报错源] ─────────────────────────
+    -- property 为空串时 "":split("+") 会产出**一个空串** ⇒ tonumber("") = nil
+    -- ⇒ Engine::getCard(arg 2) 收到 nil 报错（464 带桩局共 89 次，占全部 Lua 报错 100%）。
+    -- 报错被 smart-ai.lua:283 的 pcall 静默吞掉 ⇒ 本技能此后不再评估（无害但功能失效）。
     for _, str_id in ipairs(str_ids) do
-      table.insert(money_cards, sgs.Sanguosha:getCard(tonumber(str_id)))
+      local cid = tonumber(str_id)
+      if cid then
+        local c = sgs.Sanguosha:getCard(cid)
+        if c then table.insert(money_cards, c) end
+      end
     end
     self:sortByUseValue(money_cards, true)
 

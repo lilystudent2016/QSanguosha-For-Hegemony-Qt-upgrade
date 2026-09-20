@@ -145,6 +145,8 @@ public:
 
     void startRecord();
     void saveRecord(const QString &filename);
+    // ── [A1 补丁 2026-09-19] recordShadowRequest 用：该席位是否在录像 ──
+    bool isRecording() const { return recorder != NULL; }
 
     // 3v3 methods
     void addToSelected(const QString &general);

@@ -173,7 +173,21 @@ void RoomThread::_handleTurnBrokenNormal(GameRule *game_rule)
 
 void RoomThread::run()
 {
-    qsrand(QTime(0, 0, 0).secsTo(QTime::currentTime()));
+    // ── [A1 补丁 2026-09-20] A1_SEED 环境变量优先 ──────────────────────────
+    //   ★ 实测：**本行才是真正生效的种子点**。autoplay 流程里游戏由
+    //     RoomThread::run() 直接驱动（trigger(GameStart) + actionNormal），
+    //     Room::run() **并不在这条路径上** —— 在那里打补丁是无效的（A/B 实测暴露）。
+    //   未设 A1_SEED 时行为与原来完全一致（当天 00:00 起的秒数）；
+    //   设了则整局可复现（武将与座次/牌堆/每次决策/胜负全同）。
+    {
+        bool a1SeedOk = false;
+        const uint a1Seed = QString::fromLocal8Bit(qgetenv("A1_SEED")).toUInt(&a1SeedOk);
+        const uint a1Use = a1SeedOk ? a1Seed : (uint)QTime(0, 0, 0).secsTo(QTime::currentTime());
+        qsrand(a1Use);
+        // 仅在显式设了 A1_SEED 时打印（正常批量不污染 qt.log）
+        if (a1SeedOk)
+            qWarning("[A1_SEED] %u applied", a1Use);
+    }
     Sanguosha->registerRoom(room);
 
     addTriggerSkill(game_rule);

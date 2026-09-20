@@ -1,1 +1,17 @@
 tools/swig/
+
+# ---- 本机/构建产物 ----
+*.pro.user*
+*.qm
+*.a1bak-*
+debug/
+build-*/
+
+# ---- SWIG 自动生成的包装代码（3.2MB / 10 万行，由 swig/*.i 重新生成）----
+swig/sanguosha_wrap.cxx
+
+# ---- 工作区中间产物（缓存、大 JSON、备份）----
+.workbuddy/**/audit/
+.workbuddy/**/*.bak
+**/.cache/
+__pycache__/

@@ -14,6 +14,7 @@ CONFIG += lua
 
 SOURCES += \
     src/main.cpp \
+    src/tools/record-dump.cpp \
     src/client/aux-skills.cpp \
     src/client/client.cpp \
     src/client/clientplayer.cpp \
@@ -133,6 +134,7 @@ SOURCES += \
 
 HEADERS += \
     src/client/aux-skills.h \
+    src/tools/record-dump.h \
     src/client/client.h \
     src/client/clientplayer.h \
     src/client/clientstruct.h \

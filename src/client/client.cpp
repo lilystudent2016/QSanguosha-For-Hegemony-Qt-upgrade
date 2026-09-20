@@ -237,7 +237,9 @@ void Client::mirrorGuanxingStep(const QVariant &args)
 
     GuanxingStep step = static_cast<GuanxingStep>(arg.at(0).toInt());
     if (step == S_GUANXING_START) {
-        if (arg.size() >= 3) {
+        // 修复：本体后面要访问 arg.at(3)，长度校验必须是 >= 4
+        //（原来写 >= 3，Release 下静默越界读、Debug 下 Q_ASSERT fail-fast）
+        if (arg.size() >= 4) {
             QString who = arg.at(1).toString();
             bool upOnly = arg.at(2).toBool();
 
@@ -270,7 +272,9 @@ void Client::mirrorMoveCardsStep(const QVariant &args)
 
     GuanxingStep step = static_cast<GuanxingStep>(arg.at(0).toInt());
     if (step == S_GUANXING_START) {
-        if (arg.size() >= 3) {
+        // 修复：本体后面要访问 arg.at(5)~arg.at(8)，长度校验必须是 >= 9
+        //（原来写 >= 3，Release 下静默越界读、Debug 下 Q_ASSERT fail-fast）
+        if (arg.size() >= 9) {
             QString who = arg.at(1).toString();
             QString reason = arg.at(2).toString();
             QString pattern = arg.at(5).toString();
@@ -288,7 +292,7 @@ void Client::mirrorMoveCardsStep(const QVariant &args)
                 JsonUtils::tryParse(arg.at(3), upcards);
             }
             if (JsonUtils::isNumber(arg.at(4))) {
-                int cardNum = arg.at(3).toInt();
+                int cardNum = arg.at(4).toInt();   // 修复笔误：原为 arg.at(3)
                 for (int i = 0; i < cardNum; i++) {
                     downcards << -1;
                 }
